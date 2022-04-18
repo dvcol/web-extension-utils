@@ -23,7 +23,8 @@ export function saveContextMenu(menu: ContextMenu, update?: boolean): Observable
       console.debug('Context menu updated');
       updateContextMenu(id, updates as ContextMenuUpdate, subscriber);
     } else {
-      chrome.contextMenus.create(menu as ContextMenuCreate, () => {
+      const { onclick, ...create } = menu;
+      chrome.contextMenus.create(create as ContextMenuCreate, () => {
         console.debug('Context menu created');
         updateContextMenu(id, updates as ContextMenuUpdate, subscriber);
       });
