@@ -6,6 +6,7 @@ specifiers:
   '@dvcol/eslint-plugin-presets': ^1.1.1
   '@types/chrome': ^0.0.181
   eslint: ^8.13.0
+  extract-changelog-release: ^1.0.2
   husky: ^7.0.4
   prettier: ^2.6.2
   rxjs: ^7.5.5
@@ -22,6 +23,7 @@ devDependencies:
   '@dvcol/eslint-plugin-presets': 1.1.1_f11458f3b5a9aac7eb7b6e83671a32b3
   '@types/chrome': 0.0.181
   eslint: 8.13.0
+  extract-changelog-release: 1.0.2
   husky: 7.0.4
   prettier: 2.6.2
   standard-version: 9.3.2
@@ -3483,6 +3485,13 @@ packages:
       onetime: 5.1.2
       signal-exit: 3.0.7
       strip-final-newline: 2.0.0
+    dev: true
+
+  /extract-changelog-release/1.0.2:
+    resolution: {integrity: sha512-y7z3GsG3zlp9Y0Toqxo4vQdn8x5T0LmVpycap3OcOP+HhgSuSqfHP0gnqYWf2zsquohE/20IpJKpvbVStQG2jg==}
+    hasBin: true
+    dependencies:
+      minimist: 1.2.6
     dev: true
 
   /fast-deep-equal/3.1.3:

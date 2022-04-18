@@ -52,7 +52,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Generate Release changelog
-        run: pnpx extract-changelog-release --yes > RELEASE.md
+        run: pnpm run changelog
 
       - name: Push Release to github
         uses: softprops/action-gh-release@v1

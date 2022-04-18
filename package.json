@@ -35,7 +35,8 @@
     "watch": "npm run build -- --watch lib",
     "lint": "eslint \"+(lib|scripts)/**\"",
     "lint:fix": "eslint \"+(lib|scripts)/**\" --fix",
-    "release": "standard-version"
+    "release": "standard-version",
+    "changelog": "extract-changelog-release > RELEASE.md"
   },
   "publishConfig": {
     "access": "public"
@@ -50,6 +51,7 @@
     "@dvcol/eslint-plugin-presets": "^1.1.1",
     "@types/chrome": "^0.0.181",
     "eslint": "^8.13.0",
+    "extract-changelog-release": "^1.0.2",
     "husky": "^7.0.4",
     "prettier": "^2.6.2",
     "standard-version": "^9.3.2",
