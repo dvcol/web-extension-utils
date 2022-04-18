@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/dvcol/web-extension-utils/compare/v1.0.1...v1.0.2) (2022-04-18)
+
+
+### Bug Fixes
+
+* **ci:** fixes release changelog ([6ded7e8](https://github.com/dvcol/web-extension-utils/commit/6ded7e87f739e9e334606873a80eb2af5bfcc614))
+* **context:** allow save override when building array of options ([58c8adb](https://github.com/dvcol/web-extension-utils/commit/58c8adb93d1889a78848dc061cf49f1b9cc44a54))
+
 ### [1.0.1](https://github.com/dvcol/web-extension-utils/compare/v1.0.0...v1.0.1) (2022-04-18)
 
 
