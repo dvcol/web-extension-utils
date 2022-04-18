@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/dvcol/web-extension-utils/compare/v1.0.2...v1.0.3) (2022-04-18)
+
+
+### Bug Fixes
+
+* **context:** strip on click before update ([acd6074](https://github.com/dvcol/web-extension-utils/commit/acd60740b2168f7c913a779399c0929a5cef4c3d))
+
 ### [1.0.2](https://github.com/dvcol/web-extension-utils/compare/v1.0.1...v1.0.2) (2022-04-18)
 
 
