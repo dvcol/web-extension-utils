@@ -50,9 +50,9 @@ export function removeContextMenu(id: string): Observable<void> {
  * @param options the options
  * @param callback the context creation function
  */
-export function buildContextMenu(
-  options: ContextMenu[] | undefined,
-  callback: (menu: ContextMenu, update?: boolean) => Observable<void> = saveContextMenu,
+export function buildContextMenu<C extends ContextMenu = ContextMenu>(
+  options: C[] | undefined,
+  callback: (menu: C, update?: boolean) => Observable<void> = saveContextMenu,
 ): Observable<void | void[]> {
   chrome.contextMenus.removeAll();
   if (options?.length) return forkJoin(options.map(o => callback(o)));
