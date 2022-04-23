@@ -36,7 +36,7 @@
     "lint": "eslint \"+(lib|scripts)/**\"",
     "lint:fix": "eslint \"+(lib|scripts)/**\" --fix",
     "release": "standard-version",
-    "changelog": "extract-changelog-release > RELEASE.md"
+    "release:changelog": "extract-changelog-release > RELEASE.md"
   },
   "publishConfig": {
     "access": "public"

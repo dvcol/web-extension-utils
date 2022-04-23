@@ -8,10 +8,7 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  push:
-    tags:
-      # Ignore release candidates
-      - 'v[0-9]+.[0-9]+.[0-9]+'
+  workflow_dispatch:
 
 env:
   node_version: 17.5
@@ -43,18 +40,20 @@ jobs:
       - name: install dependencies
         run: pnpm install
 
-      - name: build
-        run: pnpm run build
+      - name: Release
+        run: |
+          # setup git creds
+          git config user.name "GitHub Release Bot"
+          git config user.email "<>"
 
-      - name: Publish to npm
-        run: pnpm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # generate release
+          yarn release
 
-      - name: Generate Release changelog
-        run: pnpm run changelog
+      - name: Push to remote
+        run: |
+          # Check status
+          git status
+          git diff --color -U0 | cat
 
-      - name: Push Release to github
-        uses: softprops/action-gh-release@v1
-        with:
-          body_path: RELEASE.md
+          # push changes
+          git push origin --follow-tags
