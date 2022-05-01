@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.1](https://github.com/dvcol/web-extension-utils/compare/v1.0.3...v1.1.0) (2022-05-01)
+
+
+### Features
+
+* **http:** add fetch rxjs wrapper ([0bf9346](https://github.com/dvcol/web-extension-utils/commit/0bf9346b19daf6ffdeecb305b7ec7475f467b4c3))
+
 ### [1.0.3](https://github.com/dvcol/web-extension-utils/compare/v1.0.2...v1.0.3) (2022-04-18)
 
 
