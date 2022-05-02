@@ -3,6 +3,12 @@
   "type": "module",
   "version": "1.1.1",
   "description": "Basic presets for stylelint",
+  "homepage": "https://github.com/dvcol/web-extension-utils",
+  "bugs": "https://github.com/dvcol/web-extension-utils/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dvcol/web-extension-utils.git"
+  },
   "keywords": [
     "webexutils",
     "webex-utils",
