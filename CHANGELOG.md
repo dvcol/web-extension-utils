@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/dvcol/web-extension-utils/compare/v1.1.1...v1.2.0) (2023-03-05)
+
+
+### Features
+
+* **downloads:** adds wrapper for downloads API ([6690761](https://github.com/dvcol/web-extension-utils/commit/66907616f36ca6849a00d07826e64d39f2033b4d))
+* **extension:** adds wrapper for extension API ([5f32ec5](https://github.com/dvcol/web-extension-utils/commit/5f32ec52595466f7c224d1c4bc4e64b4557f2441))
+* **tabs:** adds wrapper for tabs API ([99123b8](https://github.com/dvcol/web-extension-utils/commit/99123b89e827b1d46f0f117955719bd092ce692c))
+
+
+### Bug Fixes
+
+* **build:** clean up doc, lint and deps ([f933fd8](https://github.com/dvcol/web-extension-utils/commit/f933fd8f3732a8a58304c8955e9231c0317b8785))
+
 ## [1.1.1](https://github.com/dvcol/web-extension-utils/compare/v1.0.3...v1.1.0) (2022-05-01)
 
 
