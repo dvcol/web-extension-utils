@@ -1,4 +1,5 @@
-import { filter, fromEventPattern, Observable } from 'rxjs';
+import { getActiveTab } from '@lib/chrome';
+import { filter, fromEventPattern, Observable, switchMap, throwError } from 'rxjs';
 
 import type { ChromeMessage, ChromeMessageHandler, ChromeMessagePayload, ChromeMessageType, ChromeResponse, ChromeResponsePayload } from '../models';
 import type { Subscriber } from 'rxjs';
@@ -99,3 +100,22 @@ export const onConnect = <T extends string>(types?: T[], async = true): Observab
 
 /** @see chrome.runtime.connect */
 export const portConnect = chrome.runtime.connect;
+
+/**
+ * Rxjs wrapper for chrome.tabs.sendMessage event sender and chrome.tabs.query
+ * @param message the ChromeMessage to send
+ * @see chrome.tabs.sendMessage
+ * @see chrome.tabs.sendMessage
+ */
+export const sendActiveTabMessage = <P extends ChromeMessagePayload = ChromeMessagePayload, R = void>(
+  message: ChromeMessage<ChromeMessageType, P>,
+): Observable<R> =>
+  getActiveTab().pipe(
+    switchMap(tab => {
+      if (tab?.id) {
+        console.debug(`Sending '${message.type}' message to active tab '${tab.id}'`, { message, tab });
+        return sendTabMessage<ChromeMessageType, P, R>(tab.id, message);
+      }
+      return throwError(() => new Error('No active tab found'));
+    }),
+  );
