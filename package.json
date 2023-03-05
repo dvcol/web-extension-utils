@@ -5,10 +5,6 @@
   "description": "Basic presets for stylelint",
   "homepage": "https://github.com/dvcol/web-extension-utils",
   "bugs": "https://github.com/dvcol/web-extension-utils/issues",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dvcol/web-extension-utils.git"
-  },
   "keywords": [
     "webexutils",
     "webex-utils",
@@ -16,6 +12,10 @@
   ],
   "license": "MIT",
   "author": "dvcol",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dvcol/web-extension-utils.git"
+  },
   "engines": {
     "node": ">=16",
     "pnpm": ">= 6.32.0"

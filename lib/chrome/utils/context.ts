@@ -5,6 +5,7 @@ import type { Subscriber } from 'rxjs';
 
 /**
  * Update an already creation context menu
+ * @see chrome.contextMenus.update
  */
 const updateContextMenu = (id: string, updates: ContextMenuUpdate, subscriber: Subscriber<void>) =>
   chrome.contextMenus.update(id, updates, () => {
@@ -15,6 +16,7 @@ const updateContextMenu = (id: string, updates: ContextMenuUpdate, subscriber: S
 
 /**
  * Add or update a context menu to chrome with the given options
+ * @see chrome.contextMenus.create
  */
 export function saveContextMenu(menu: ContextMenu, update?: boolean): Observable<void> {
   return new Observable<void>(subscriber => {
@@ -34,6 +36,7 @@ export function saveContextMenu(menu: ContextMenu, update?: boolean): Observable
 
 /**
  * Remove context menu from chrome corresponding to the specified id
+ * @see chrome.contextMenus.remove
  */
 export function removeContextMenu(id: string): Observable<void> {
   return new Observable<void>(subscriber => {
@@ -50,6 +53,7 @@ export function removeContextMenu(id: string): Observable<void> {
  * Build context menu for the menu options given
  * @param options the options
  * @param callback the context creation function
+ * @see chrome.contextMenus.removeAll
  */
 export function buildContextMenu<C extends ContextMenu = ContextMenu>(
   options: C[] | undefined,
