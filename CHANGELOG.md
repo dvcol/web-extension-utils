@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/dvcol/web-extension-utils/compare/v1.3.0...v1.3.1) (2023-03-06)
+
+
+### Bug Fixes
+
+* **extension:** exclude chrome store from script injection ([162f785](https://github.com/dvcol/web-extension-utils/commit/162f78564498ef37285d3e989e6ad7477dd95fb9))
+
 ## [1.3.0](https://github.com/dvcol/web-extension-utils/compare/v1.2.0...v1.3.0) (2023-03-05)
 
 
