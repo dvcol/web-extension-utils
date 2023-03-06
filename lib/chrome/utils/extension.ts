@@ -29,6 +29,7 @@ const injectScripts = async (matches: ContentScript['matches'], scripts: Content
   tabs?.forEach(tab => {
     if (!tab?.id) return;
     if (!tab?.url?.startsWith('http')) return;
+    if (tab?.url?.startsWith('https://chrome.google.com/webstore/')) return;
     if (scripts) injectScript(tab.id, scripts);
   });
 };
