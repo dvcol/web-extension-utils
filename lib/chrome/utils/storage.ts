@@ -1,6 +1,7 @@
-import { fromEventPattern, Observable } from 'rxjs';
+import { from, fromEventPattern, map } from 'rxjs';
 
 import type { StorageArea, StorageChange, StorageChangeHandler } from '@lib/chrome/models/storage';
+import type { Observable } from 'rxjs';
 
 /**
  * Parse a json if it's in string form
@@ -13,12 +14,9 @@ const parseJSON = <T>(json?: string | object) => (typeof json == 'string' && jso
  * @param name the key to extract from storage
  * @param storage the chrome storage object (chrome.storage.sync, chrome.storage.local, ...)
  */
-const storageGet = <R>(storage: StorageArea, name?: string): Observable<R> =>
-  new Observable<R>(subscriber =>
-    storage.get(name, keys => {
-      subscriber.next(parseJSON<R>(keys[name]));
-      subscriber.complete();
-    }),
+export const storageGet = <R>(storage: StorageArea, name?: string): Observable<R> =>
+  from(storage.get(name)).pipe(
+    map(keys => (name ? parseJSON<R>(keys[name]) : Object.keys(keys).reduce((acc, next) => ({ ...acc, [next]: parseJSON(keys[next]) }), {} as R))),
   );
 
 /**
@@ -27,13 +25,8 @@ const storageGet = <R>(storage: StorageArea, name?: string): Observable<R> =>
  * @param payload the object to serialize into storage
  * @param storage the chrome storage object (chrome.storage.sync, chrome.storage.local, ...)
  */
-const storageSet = <R>(storage: StorageArea, name: string, payload: R): Observable<R> =>
-  new Observable<R>(subscriber =>
-    storage.set({ [name]: JSON.stringify(payload) }, () => {
-      subscriber.next(payload);
-      subscriber.complete();
-    }),
-  );
+export const storageSet = <R>(storage: StorageArea, name: string, payload: R): Observable<R> =>
+  from(storage.set({ [name]: JSON.stringify(payload) })).pipe(map(() => payload));
 
 /**
  * Rxjs wrapper for chrome: chrome.storage.sync.get
@@ -84,7 +77,7 @@ export const localSet = <R>(name: string, payload: R): Observable<R> => storageS
  * @see fromEventPattern
  * @see chrome.storage.onChanged
  */
-const getOnChange = (storage: StorageArea) => {
+export const getOnChange = (storage: StorageArea) => {
   const addStorageHandler = (handler: StorageChangeHandler) => storage.onChanged.addListener(handler);
   const removeStorageHandler = (handler: StorageChangeHandler) => storage.onChanged.removeListener(handler);
   return fromEventPattern(addStorageHandler, removeStorageHandler);
