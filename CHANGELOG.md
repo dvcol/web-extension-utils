@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/dvcol/web-extension-utils/compare/v1.5.0...v1.5.1) (2023-03-07)
+
+
+### Bug Fixes
+
+* **storage:** fix empty getter/setter ([67691b2](https://github.com/dvcol/web-extension-utils/commit/67691b2515f8e8dac5afeecab8088e408be000b0))
+
 ## [1.5.0](https://github.com/dvcol/web-extension-utils/compare/v1.4.0...v1.5.0) (2023-03-07)
 
 
