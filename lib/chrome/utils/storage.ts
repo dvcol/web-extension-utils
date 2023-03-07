@@ -13,10 +13,10 @@ const parseJSON = <T>(json?: string | object) => (typeof json == 'string' && jso
  * @param name the key to extract from storage
  * @param storage the chrome storage object (chrome.storage.sync, chrome.storage.local, ...)
  */
-const storageGet = <R>(name: string, storage: StorageArea): Observable<R> =>
+const storageGet = <R>(storage: StorageArea, name?: string): Observable<R> =>
   new Observable<R>(subscriber =>
     storage.get(name, keys => {
-      subscriber.next(parseJSON<R>(keys[name]));
+      subscriber.next(parseJSON<R>(name ? keys[name] : keys));
       subscriber.complete();
     }),
   );
@@ -27,7 +27,7 @@ const storageGet = <R>(name: string, storage: StorageArea): Observable<R> =>
  * @param payload the object to serialize into storage
  * @param storage the chrome storage object (chrome.storage.sync, chrome.storage.local, ...)
  */
-const storageSet = <R>(name: string, payload: R, storage: StorageArea): Observable<R> =>
+const storageSet = <R>(storage: StorageArea, name: string, payload: R): Observable<R> =>
   new Observable<R>(subscriber =>
     storage.set({ [name]: JSON.stringify(payload) }, () => {
       subscriber.next(payload);
@@ -43,7 +43,7 @@ const storageSet = <R>(name: string, payload: R, storage: StorageArea): Observab
  * @see storageGet
  * @see chrome.storage.sync
  */
-export const syncGet = <R>(name: string): Observable<R> => storageGet(name, chrome.storage.sync);
+export const syncGet = <R>(name?: string): Observable<R> => storageGet(chrome.storage.sync, name);
 
 /**
  * Rxjs wrapper for chrome: chrome.storage.sync.set
@@ -54,7 +54,7 @@ export const syncGet = <R>(name: string): Observable<R> => storageGet(name, chro
  * @see storageSet
  * @see chrome.storage.sync
  */
-export const syncSet = <R>(name: string, payload: R): Observable<R> => storageSet(name, payload, chrome.storage.sync);
+export const syncSet = <R>(name: string, payload: R): Observable<R> => storageSet(chrome.storage.sync, name, payload);
 
 /**
  * Rxjs wrapper for chrome: chrome.storage.local.get
@@ -64,7 +64,7 @@ export const syncSet = <R>(name: string, payload: R): Observable<R> => storageSe
  * @see storageGet
  * @see chrome.storage.local
  */
-export const localGet = <R>(name: string): Observable<R> => storageGet(name, chrome.storage.local);
+export const localGet = <R>(name?: string): Observable<R> => storageGet(chrome.storage.local, name);
 
 /**
  * Rxjs wrapper for chrome: chrome.storage.local.set
@@ -75,4 +75,4 @@ export const localGet = <R>(name: string): Observable<R> => storageGet(name, chr
  * @see storageSet
  * @see chrome.storage.local
  */
-export const localSet = <R>(name: string, payload: R): Observable<R> => storageSet(name, payload, chrome.storage.local);
+export const localSet = <R>(name: string, payload: R): Observable<R> => storageSet(chrome.storage.local, name, payload);
