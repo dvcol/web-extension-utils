@@ -1,6 +1,6 @@
-import { Observable } from 'rxjs';
+import { fromEventPattern, Observable } from 'rxjs';
 
-type StorageArea = chrome.storage.StorageArea;
+import type { StorageArea, StorageChange, StorageChangeHandler } from '@lib/chrome/models/storage';
 
 /**
  * Parse a json if it's in string form
@@ -16,7 +16,7 @@ const parseJSON = <T>(json?: string | object) => (typeof json == 'string' && jso
 const storageGet = <R>(storage: StorageArea, name?: string): Observable<R> =>
   new Observable<R>(subscriber =>
     storage.get(name, keys => {
-      subscriber.next(parseJSON<R>(name ? keys[name] : keys));
+      subscriber.next(parseJSON<R>(keys[name]));
       subscriber.complete();
     }),
   );
@@ -76,3 +76,30 @@ export const localGet = <R>(name?: string): Observable<R> => storageGet(chrome.s
  * @see chrome.storage.local
  */
 export const localSet = <R>(name: string, payload: R): Observable<R> => storageSet(chrome.storage.local, name, payload);
+
+/**
+ * Wraps onChange event bus into rxjs chain.
+ * @param storage the storage area to listen to
+ *
+ * @see fromEventPattern
+ * @see chrome.storage.onChanged
+ */
+const getOnChange = (storage: StorageArea) => {
+  const addStorageHandler = (handler: StorageChangeHandler) => storage.onChanged.addListener(handler);
+  const removeStorageHandler = (handler: StorageChangeHandler) => storage.onChanged.removeListener(handler);
+  return fromEventPattern(addStorageHandler, removeStorageHandler);
+};
+
+/**
+ * Rxjs wrapper for chrome.storage.sync.onChanged
+ *
+ * @see chrome.storage.sync.onChanged
+ */
+export const onSyncChange$: Observable<StorageChange> = getOnChange(chrome.storage.sync);
+
+/**
+ * Rxjs wrapper for chrome.storage.local.onChanged
+ *
+ * @see chrome.storage.local.onChanged
+ */
+export const onLocalChange$: Observable<StorageChange> = getOnChange(chrome.storage.sync);
