@@ -1,7 +1,7 @@
 {
   "name": "@dvcol/web-extension-utils",
   "type": "module",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Basic presets for stylelint",
   "homepage": "https://github.com/dvcol/web-extension-utils",
   "bugs": "https://github.com/dvcol/web-extension-utils/issues",

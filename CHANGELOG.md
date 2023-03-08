@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.2](https://github.com/dvcol/web-extension-utils/compare/v1.6.1...v1.6.2) (2023-03-08)
+
+
+### Bug Fixes
+
+* **http:** fix rxFetch destructuring ([20a9e74](https://github.com/dvcol/web-extension-utils/commit/20a9e746e3309ea73517d0f219e66df0ed7c66d3))
+
 ### [1.6.1](https://github.com/dvcol/web-extension-utils/compare/v1.6.0...v1.6.1) (2023-03-08)
 
 
