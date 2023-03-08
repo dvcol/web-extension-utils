@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/dvcol/web-extension-utils/compare/v1.5.1...v1.6.0) (2023-03-08)
+
+
+### Features
+
+* **storage:** add storage clear methods ([0f04c3e](https://github.com/dvcol/web-extension-utils/commit/0f04c3e05e6e92e49ad77c4ddf105d15e2874c6e))
+
 ### [1.5.1](https://github.com/dvcol/web-extension-utils/compare/v1.5.0...v1.5.1) (2023-03-07)
 
 
