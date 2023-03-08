@@ -71,6 +71,28 @@ export const localGet = <R>(name?: string): Observable<R> => storageGet(chrome.s
 export const localSet = <R>(name: string, payload: R): Observable<R> => storageSet(chrome.storage.local, name, payload);
 
 /**
+ * Rxjs wrapper for chrome.storage.clear
+ * @param storage the storage area to clear
+ *
+ * @see chrome.storage.StorageArea
+ */
+export const storageClear = (storage: StorageArea): Observable<void> => from(storage.clear());
+
+/**
+ * Rxjs wrapper for chrome.storage.local.clear
+ *
+ * @see chrome.storage.local.clear
+ */
+export const localClear = storageClear(chrome.storage.local);
+
+/**
+ * Rxjs wrapper for chrome.storage.sync.clear
+ *
+ * @see chrome.storage.sync.clear
+ */
+export const syncClear = storageClear(chrome.storage.sync);
+
+/**
  * Wraps onChange event bus into rxjs chain.
  * @param storage the storage area to listen to
  *
