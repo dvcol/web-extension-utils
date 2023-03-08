@@ -83,14 +83,14 @@ export const storageClear = (storage: StorageArea): Observable<void> => from(sto
  *
  * @see chrome.storage.local.clear
  */
-export const localClear = storageClear(chrome.storage.local);
+export const localClear = () => storageClear(chrome.storage.local);
 
 /**
  * Rxjs wrapper for chrome.storage.sync.clear
  *
  * @see chrome.storage.sync.clear
  */
-export const syncClear = storageClear(chrome.storage.sync);
+export const syncClear = () => storageClear(chrome.storage.sync);
 
 /**
  * Wraps onChange event bus into rxjs chain.
