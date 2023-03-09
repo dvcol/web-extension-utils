@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/dvcol/web-extension-utils/compare/v1.6.2...v1.7.0) (2023-03-09)
+
+
+### Features
+
+* **logger:** adds proxy logger to control log level from outside ([df517db](https://github.com/dvcol/web-extension-utils/commit/df517dbe25e9c07c52fdf65e83b599c7cf81dcf5))
+
 ### [1.6.2](https://github.com/dvcol/web-extension-utils/compare/v1.6.1...v1.6.2) (2023-03-08)
 
 
