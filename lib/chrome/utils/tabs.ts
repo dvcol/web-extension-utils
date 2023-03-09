@@ -1,7 +1,6 @@
 import { from, map } from 'rxjs';
 
 import type { QueryInfo, Tab } from '../models';
-
 import type { Observable } from 'rxjs';
 
 /**

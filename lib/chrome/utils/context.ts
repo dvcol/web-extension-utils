@@ -1,4 +1,6 @@
-import { EMPTY, forkJoin, Observable } from 'rxjs';
+import { ProxyLogger } from '@lib/chrome/utils/logger';
+
+import { forkJoin, Observable, of } from 'rxjs';
 
 import type { ContextMenu, ContextMenuCreate, ContextMenuUpdate } from '../models';
 import type { Subscriber } from 'rxjs';
@@ -9,7 +11,7 @@ import type { Subscriber } from 'rxjs';
  */
 const updateContextMenu = (id: string, updates: ContextMenuUpdate, subscriber: Subscriber<void>) =>
   chrome.contextMenus.update(id, updates, () => {
-    console.debug('Context menu updated');
+    ProxyLogger.debug(`Context menu '${id}' updated`, { id, updates });
     subscriber.next();
     subscriber.complete();
   });
@@ -22,12 +24,12 @@ export function saveContextMenu(menu: ContextMenu, update?: boolean): Observable
   return new Observable<void>(subscriber => {
     const { id, ...updates } = menu;
     if (update) {
-      console.debug('Context menu updated');
+      ProxyLogger.debug(`Context menu '${id}' updated`, { id, updates });
       updateContextMenu(id, updates as ContextMenuUpdate, subscriber);
     } else {
       const { onclick, ...create } = menu;
       chrome.contextMenus.create(create as ContextMenuCreate, () => {
-        console.debug('Context menu created');
+        ProxyLogger.debug(`Context menu '${id}' created`, { id, updates });
         updateContextMenu(id, updates as ContextMenuUpdate, subscriber);
       });
     }
@@ -40,9 +42,9 @@ export function saveContextMenu(menu: ContextMenu, update?: boolean): Observable
  */
 export function removeContextMenu(id: string): Observable<void> {
   return new Observable<void>(subscriber => {
-    console.debug('removing context menu');
+    ProxyLogger.debug(`removing context menu '${id}'`);
     chrome.contextMenus.remove(id, () => {
-      console.debug('Context menu removed');
+      ProxyLogger.debug(`Context menu '${id}' removed`);
       subscriber.next();
       subscriber.complete();
     });
@@ -61,5 +63,5 @@ export function buildContextMenu<C extends ContextMenu = ContextMenu>(
 ): Observable<void | void[]> {
   chrome.contextMenus.removeAll();
   if (options?.length) return forkJoin(options.map(o => callback(o)));
-  return EMPTY;
+  return of(null);
 }

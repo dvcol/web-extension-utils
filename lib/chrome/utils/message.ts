@@ -1,4 +1,5 @@
-import { getActiveTab } from '@lib/chrome';
+import { getActiveTab, ProxyLogger } from '@lib/chrome';
+
 import { filter, fromEventPattern, Observable, switchMap, throwError } from 'rxjs';
 
 import type { ChromeMessage, ChromeMessageHandler, ChromeMessagePayload, ChromeMessageType, ChromeResponse, ChromeResponsePayload } from '../models';
@@ -113,7 +114,7 @@ export const sendActiveTabMessage = <P extends ChromeMessagePayload = ChromeMess
   getActiveTab().pipe(
     switchMap(tab => {
       if (tab?.id) {
-        console.debug(`Sending '${message.type}' message to active tab '${tab.id}'`, { message, tab });
+        ProxyLogger.debug(`Sending '${message.type}' message to active tab '${tab.id}'`, { message, tab });
         return sendTabMessage<ChromeMessageType, P, R>(tab.id, message);
       }
       return throwError(() => new Error('No active tab found'));

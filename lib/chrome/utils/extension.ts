@@ -1,7 +1,8 @@
+import { ProxyLogger } from '@lib/chrome/utils/logger';
+
 import { fromEventPattern } from 'rxjs';
 
 import type { ContentScript, InstalledDetails } from '../models';
-
 import type { Observable } from 'rxjs';
 
 type InstalledHandler = (details: InstalledDetails) => void;
@@ -25,7 +26,7 @@ const injectScript = (tabId: number, script: string[]) =>
 
 const injectScripts = async (matches: ContentScript['matches'], scripts: ContentScript['js']) => {
   const tabs = await chrome.tabs.query({ url: matches });
-  console.debug('Injecting content scripts in tabs', { tabs, matches, scripts });
+  ProxyLogger.debug('Injecting content scripts in tabs', { tabs, matches, scripts });
   tabs?.forEach(tab => {
     if (!tab?.id) return;
     if (!tab?.url?.startsWith('http')) return;

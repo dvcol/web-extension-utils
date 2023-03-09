@@ -1,3 +1,4 @@
+import { ProxyLogger } from '@lib/chrome/utils/logger';
 import { buildUrl } from '@lib/http/utils';
 
 import { throwError } from 'rxjs';
@@ -12,7 +13,7 @@ export const rxFetch = <T>({ url, params, redirect, ...init }: BaseHttpRequest):
   try {
     _url = buildUrl(url, params).toString();
   } catch (error) {
-    console.debug('Failed to build url for ', url, params);
+    ProxyLogger.debug('Failed to build url for ', url, params);
     return throwError(() => error);
   }
   return fromFetch<T>(_url, {
