@@ -11,8 +11,8 @@ on:
   workflow_dispatch:
 
 env:
-  node_version: 17.5
-  pnpm_version: 6.32.0
+  node_version: 18.x
+  pnpm_version: 7.x
 
 jobs:
   release:
