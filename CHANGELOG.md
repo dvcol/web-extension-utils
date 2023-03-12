@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.1](https://github.com/dvcol/web-extension-utils/compare/v1.7.0...v1.7.1) (2023-03-12)
+
+
+### Bug Fixes
+
+* **type:** fix HttpParameters to include Blobs ([529bd3a](https://github.com/dvcol/web-extension-utils/commit/529bd3a9f3871f3a78b5fe7072f449ce83abc56d))
+
 ## [1.7.0](https://github.com/dvcol/web-extension-utils/compare/v1.6.2...v1.7.0) (2023-03-09)
 
 
