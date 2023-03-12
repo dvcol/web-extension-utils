@@ -1,1 +1,1 @@
-export type HttpParameters = { [key: string]: string | string[] | Blob };
+export type HttpParameters = Record<string, string | string[]>;

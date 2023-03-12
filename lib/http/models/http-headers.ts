@@ -1,2 +1,2 @@
 /** Allowed Http Headers */
-export type HttpHeaders = Headers | string[][] | Record<string, string> | undefined;
+export type HttpHeaders = HeadersInit | Headers | string[][] | Record<string, string> | undefined;
