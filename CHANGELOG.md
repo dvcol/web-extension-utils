@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/dvcol/web-extension-utils/compare/v2.2.0...v2.3.0) (2023-03-19)
+
+
+### Features
+
+* **file:** add json merge utils ([41d680f](https://github.com/dvcol/web-extension-utils/commit/41d680fa88939e9585a51d6db074a995f89c3f9f))
+
 ## [2.2.0](https://github.com/dvcol/web-extension-utils/compare/v2.1.0...v2.2.0) (2023-03-19)
 
 
