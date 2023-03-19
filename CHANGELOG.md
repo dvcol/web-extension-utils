@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/dvcol/web-extension-utils/compare/v1.7.2...v2.0.0) (2023-03-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* **build:** rework to allow subfolder exports
+
+### Features
+
+* **build:** rework to allow subfolder exports ([0885408](https://github.com/dvcol/web-extension-utils/commit/0885408849750d556d276f299cdd54f712014a32))
+* **utils:** adds common utils ([372d457](https://github.com/dvcol/web-extension-utils/commit/372d4578c5bf51c094431f53c219b86f5d6b1995))
+
 ### [1.7.2](https://github.com/dvcol/web-extension-utils/compare/v1.7.1...v1.7.2) (2023-03-12)
 
 
