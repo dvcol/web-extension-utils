@@ -1,4 +1,4 @@
-import { ProxyLogger } from '@lib/chrome/utils/logger';
+import { ProxyLogger } from '@lib/common';
 
 import { forkJoin, Observable, of } from 'rxjs';
 

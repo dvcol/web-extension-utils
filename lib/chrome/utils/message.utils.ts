@@ -1,4 +1,5 @@
-import { getActiveTab, ProxyLogger } from '@lib/chrome';
+import { getActiveTab } from '@lib/chrome';
+import { ProxyLogger } from '@lib/common';
 
 import { filter, fromEventPattern, Observable, switchMap, throwError } from 'rxjs';
 

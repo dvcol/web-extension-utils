@@ -28,7 +28,7 @@ env:
   pnpm_version: 7.x
 
 jobs:
-  release:
+  publish:
     name: Release
     runs-on: ubuntu-latest
 

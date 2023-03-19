@@ -1,5 +1,11 @@
 import type { BaseHttpRequest, HttpParameters } from '@lib/http/models';
 
+/**
+ * Helper function to build a URL from url and parameters
+ * @param url base url
+ * @param params optional parameters
+ * @see URL
+ */
 export const buildUrl = (url: BaseHttpRequest['url'], params?: HttpParameters): URL => {
   const builder = new URL(typeof url === 'string' || url instanceof URL ? url : `${url.base}/${url.path}`);
   if (params) {

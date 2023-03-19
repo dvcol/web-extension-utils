@@ -1,6 +1,6 @@
 import { from, fromEventPattern, map } from 'rxjs';
 
-import type { StorageArea, StorageChange, StorageChangeHandler } from '@lib/chrome/models/storage';
+import type { StorageArea, StorageChange, StorageChangeHandler } from '@lib/chrome/models/storage.model';
 import type { Observable } from 'rxjs';
 
 /**

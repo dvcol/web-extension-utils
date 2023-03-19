@@ -1,4 +1,4 @@
-import { ProxyLogger } from '@lib/chrome/utils/logger';
+import { ProxyLogger } from '@lib/common';
 import { buildUrl } from '@lib/http/utils';
 
 import { throwError } from 'rxjs';
@@ -8,6 +8,13 @@ import { fromFetch } from 'rxjs/fetch';
 import type { BaseHttpRequest } from '@lib/http/models';
 import type { Observable } from 'rxjs';
 
+/**
+ * rxjs helper to build valid URL and doing fetch
+ * @param url
+ * @param params
+ * @param redirect
+ * @param init
+ */
 export const rxFetch = <T>({ url, params, redirect, ...init }: BaseHttpRequest): Observable<T> => {
   let _url: string;
   try {
