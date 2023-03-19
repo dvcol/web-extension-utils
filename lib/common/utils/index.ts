@@ -8,3 +8,4 @@ export * from './rxjs.utils';
 export * from './string.utils';
 export * from './style.utils';
 export * from './typescript.utils';
+export * from './window.utils';
