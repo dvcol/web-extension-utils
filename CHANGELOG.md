@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/dvcol/web-extension-utils/compare/v2.1.0...v2.2.0) (2023-03-19)
+
+
+### Features
+
+* **window:** adds window util ([4a375af](https://github.com/dvcol/web-extension-utils/commit/4a375af0f43f316439a79efa34d0d7bed29ad7fc))
+
 ## [2.1.0](https://github.com/dvcol/web-extension-utils/compare/v2.0.0...v2.1.0) (2023-03-19)
 
 
