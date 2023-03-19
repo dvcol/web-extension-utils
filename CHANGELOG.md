@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.1](https://github.com/dvcol/web-extension-utils/compare/v2.3.0...v2.3.1) (2023-03-19)
+
+
+### Bug Fixes
+
+* **publish:** temporarily publish whole lib while fixing tree shaking ([71bc46e](https://github.com/dvcol/web-extension-utils/commit/71bc46e68f6a22f72fe7c79d9cbe3bafaf561b34))
+
 ## [2.3.0](https://github.com/dvcol/web-extension-utils/compare/v2.2.0...v2.3.0) (2023-03-19)
 
 
