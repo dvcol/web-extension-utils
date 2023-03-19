@@ -1,6 +1,7 @@
 export * from './array.utils';
 export * from './compare.utils';
 export * from './date.utils';
+export * from './downlaod.utils';
 export * from './logger.utils';
 export * from './navigator.utils';
 export * from './rxjs.utils';
