@@ -23,28 +23,6 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./chrome": {
-      "require": "./dist/chrome/index.cjs",
-      "import": "./dist/chrome/index.js",
-      "types": "./dist/chrome/index.d.ts"
-    },
-    "./common": {
-      "require": "./dist/common/index.cjs",
-      "import": "./dist/common/index.js",
-      "types": "./dist/common/index.d.ts"
-    },
-    "./http": {
-      "require": "./dist/http/index.cjs",
-      "import": "./dist/http/index.js",
-      "types": "./dist/http/index.d.ts"
-    }
-  },
   "files": [
     "*.md",
     "LICENSE",
