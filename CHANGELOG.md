@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.3](https://github.com/dvcol/web-extension-utils/compare/v2.3.2...v2.3.3) (2023-03-22)
+
+
+### Bug Fixes
+
+* **build:** remove node12 export because of spotty TS support ([65cd177](https://github.com/dvcol/web-extension-utils/commit/65cd1774a8defc736723a80275c529fc9d5c5557))
+
 ### [2.3.2](https://github.com/dvcol/web-extension-utils/compare/v2.3.1...v2.3.2) (2023-03-22)
 
 ### [2.3.1](https://github.com/dvcol/web-extension-utils/compare/v2.3.0...v2.3.1) (2023-03-19)
