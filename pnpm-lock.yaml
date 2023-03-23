@@ -4,7 +4,7 @@ specifiers:
   '@commitlint/cli': ^17.0.0
   '@commitlint/config-conventional': ^17.0.0
   '@dvcol/eslint-plugin-presets': ^1.1.1
-  '@types/chrome': ^0.0.224
+  '@types/chrome': ^0.0.225
   eslint: ^8.13.0
   extract-changelog-release: ^1.0.2
   fast-glob: ^3.2.12
@@ -25,7 +25,7 @@ devDependencies:
   '@commitlint/cli': 17.4.4
   '@commitlint/config-conventional': 17.4.4
   '@dvcol/eslint-plugin-presets': 1.1.1_7gkiagmy5t46dizlkkqu2ntdye
-  '@types/chrome': 0.0.224
+  '@types/chrome': 0.0.225
   eslint: 8.13.0
   extract-changelog-release: 1.0.2
   husky: 8.0.3
@@ -1893,8 +1893,8 @@ packages:
     resolution: {integrity: sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==}
     dev: true
 
-  /@types/chrome/0.0.224:
-    resolution: {integrity: sha512-YkL7q3KDV7OAKgVCBNIfH73rnjNMbIzAYHzTa2DKhSK/2z0Wf/n8yJnK/UoW+lvuYJJR4LtAkG3YvsIZTy7BOA==}
+  /@types/chrome/0.0.225:
+    resolution: {integrity: sha512-acSFQN7X0/fjF6PSP0Ki9TlwWsEeJeh5WclMYilJSHHp+ayLDMD/YeSIUzsodwLKPZQ9h8SyiL13/pPab8M4RA==}
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.8
