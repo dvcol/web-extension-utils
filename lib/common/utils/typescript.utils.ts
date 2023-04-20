@@ -12,3 +12,10 @@ export const staticImplements =
     // eslint-disable-next-line no-unused-expressions
     constructor;
   };
+
+/**
+ * Extends Partial to make all own properties also Partial
+ */
+export type RecursivePartial<T> = {
+  [P in keyof T]?: RecursivePartial<T[P]> | T[P];
+};
