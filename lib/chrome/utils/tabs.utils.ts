@@ -1,11 +1,13 @@
-import { from, map } from 'rxjs';
-
-import type { QueryInfo, Tab } from '../models';
-import type { Observable } from 'rxjs';
+/**
+ * Open a new tab with the given options.
+ *
+ * This is a wrapper around `chrome.tabs.create` that falls back to `window.open` if the method is not available.
+ *
+ * @param options - The options for the new tab.
+ */
+const openTab = (options: chrome.tabs.CreateProperties) => window.open(options.url, options.active ? '_self' : '_blank');
 
 /**
- * Return the active tab
- * @param queryInfo Query info for active scope
+ * @see [chrome.tabs.create](https://developer.chrome.com/docs/extensions/reference/tabs/#method-create)
  */
-export const getActiveTab = (queryInfo: QueryInfo = { active: true, lastFocusedWindow: true }): Observable<Tab> =>
-  from(chrome?.tabs?.query(queryInfo)).pipe(map(([tab]) => tab));
+export const createTab = (options: chrome.tabs.CreateProperties) => (globalThis?.chrome?.tabs?.create ?? openTab)(options);

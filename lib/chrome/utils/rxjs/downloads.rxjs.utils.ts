@@ -1,6 +1,6 @@
 import { fromEventPattern } from 'rxjs';
 
-import type { DownloadDelta, DownloadFilenameSuggestion, DownloadItem } from '../models';
+import type { DownloadDelta, DownloadFilenameSuggestion, DownloadItem } from '@lib/chrome/models/downloads.model';
 import type { Observable } from 'rxjs';
 
 type FilenameHandler = (downloadItem: DownloadItem, suggest: (suggestion?: DownloadFilenameSuggestion) => void) => void;

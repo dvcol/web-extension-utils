@@ -1,9 +1,16 @@
-import { getActiveTab } from '@lib/chrome';
+import { getActiveTab } from '@lib/chrome/utils/rxjs/tabs.rxjs.utils';
 import { ProxyLogger } from '@lib/common';
 
 import { filter, fromEventPattern, Observable, switchMap, throwError } from 'rxjs';
 
-import type { ChromeMessage, ChromeMessageHandler, ChromeMessagePayload, ChromeMessageType, ChromeResponse, ChromeResponsePayload } from '../models';
+import type {
+  ChromeMessage,
+  ChromeMessageHandler,
+  ChromeMessagePayload,
+  ChromeMessageType,
+  ChromeResponse,
+  ChromeResponsePayload,
+} from '@lib/chrome/models/message.model';
 import type { Subscriber } from 'rxjs';
 
 type MessageSender = chrome.runtime.MessageSender;

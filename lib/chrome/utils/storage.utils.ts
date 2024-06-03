@@ -1,120 +1,149 @@
-import { from, fromEventPattern, map } from 'rxjs';
-
-import type { StorageArea, StorageChange, StorageChangeHandler } from '@lib/chrome/models/storage.model';
-import type { Observable } from 'rxjs';
+import type { RecursiveRecord } from '@lib/common/utils/typescript.utils';
 
 /**
- * Parse a json if it's in string form
- * @param json
+ * @see [chrome.storage.sync](https://developer.chrome.com/docs/extensions/reference/storage/#type-SyncStorageArea)
  */
-const parseJSON = <T>(json?: string | object) => (typeof json == 'string' && json?.length ? JSON.parse(json) : json) as T;
+export const syncStorage: chrome.storage.SyncStorageArea | undefined = globalThis?.chrome?.storage?.sync;
 
 /**
- * Rxjs wrapper for chrome storage getter
- * @param name the key to extract from storage
- * @param storage the chrome storage object (chrome.storage.sync, chrome.storage.local, ...)
+ * @see [chrome.storage.local](https://developer.chrome.com/docs/extensions/reference/storage/#type-LocalStorageArea)
  */
-export const storageGet = <R>(storage: StorageArea, name?: string): Observable<R> =>
-  from(storage.get(name)).pipe(
-    map(keys => (name ? parseJSON<R>(keys[name]) : Object.keys(keys).reduce((acc, next) => ({ ...acc, [next]: parseJSON(keys[next]) }), {} as R))),
-  );
+export const localStorage: chrome.storage.LocalStorageArea | undefined = globalThis?.chrome?.storage?.local;
 
 /**
- * Rxjs wrapper for chrome storage setter
- * @param name the key to set into storage
- * @param payload the object to serialize into storage
- * @param storage the chrome storage object (chrome.storage.sync, chrome.storage.local, ...)
+ * @see [chrome.storage.session](https://developer.chrome.com/docs/extensions/reference/storage/#type-StorageArea)
  */
-export const storageSet = <R>(storage: StorageArea, name: string, payload: R): Observable<R> =>
-  from(storage.set({ [name]: JSON.stringify(payload) })).pipe(map(() => payload));
+export const sessionStorage: chrome.storage.StorageArea | undefined = globalThis?.chrome?.storage?.session;
+
+const filterObject = (object: Record<string, unknown>, regex: string | RegExp) =>
+  Object.fromEntries(Object.entries(object).filter(([key]) => (typeof regex === 'string' ? new RegExp(regex) : regex).test(key)));
+
+const reverseFilterObject = (object: Record<string, unknown>, regex: string | RegExp) =>
+  Object.fromEntries(Object.entries(object).filter(([key]) => !(typeof regex === 'string' ? new RegExp(regex) : regex).test(key)));
 
 /**
- * Rxjs wrapper for chrome: chrome.storage.sync.get
- *
- * @param name the key to extract from storage
- *
- * @see storageGet
- * @see chrome.storage.sync
+ * This function is used to get the total size of the local storage.
+ * @param storage The storage area to get the size of.
+ * @param encoder The encoder to use to get the size of the keys and values.
  */
-export const syncGet = <R>(name?: string): Observable<R> => storageGet(chrome.storage.sync, name);
-
-/**
- * Rxjs wrapper for chrome: chrome.storage.sync.set
- *
- * @param name the key to set into storage
- * @param payload the object to serialize into storage
- *
- * @see storageSet
- * @see chrome.storage.sync
- */
-export const syncSet = <R>(name: string, payload: R): Observable<R> => storageSet(chrome.storage.sync, name, payload);
-
-/**
- * Rxjs wrapper for chrome: chrome.storage.local.get
- *
- * @param name the key to extract from storage
- *
- * @see storageGet
- * @see chrome.storage.local
- */
-export const localGet = <R>(name?: string): Observable<R> => storageGet(chrome.storage.local, name);
-
-/**
- * Rxjs wrapper for chrome: chrome.storage.local.set
- *
- * @param name the key to set into storage
- * @param payload the object to serialize into storage
- *
- * @see storageSet
- * @see chrome.storage.local
- */
-export const localSet = <R>(name: string, payload: R): Observable<R> => storageSet(chrome.storage.local, name, payload);
-
-/**
- * Rxjs wrapper for chrome.storage.clear
- * @param storage the storage area to clear
- *
- * @see chrome.storage.StorageArea
- */
-export const storageClear = (storage: StorageArea): Observable<void> => from(storage.clear());
-
-/**
- * Rxjs wrapper for chrome.storage.local.clear
- *
- * @see chrome.storage.local.clear
- */
-export const localClear = () => storageClear(chrome.storage.local);
-
-/**
- * Rxjs wrapper for chrome.storage.sync.clear
- *
- * @see chrome.storage.sync.clear
- */
-export const syncClear = () => storageClear(chrome.storage.sync);
-
-/**
- * Wraps onChange event bus into rxjs chain.
- * @param storage the storage area to listen to
- *
- * @see fromEventPattern
- * @see chrome.storage.onChanged
- */
-export const getOnChange = (storage: StorageArea) => {
-  const addStorageHandler = (handler: StorageChangeHandler) => storage.onChanged.addListener(handler);
-  const removeStorageHandler = (handler: StorageChangeHandler) => storage.onChanged.removeListener(handler);
-  return fromEventPattern(addStorageHandler, removeStorageHandler);
+const getLocalStorageSize = (storage = window.localStorage, encoder = new TextEncoder()) => {
+  return Object.entries(storage).reduce((acc, [key, value]) => acc + encoder.encode(key).length + encoder.encode(value).length, 0);
 };
 
-/**
- * Rxjs wrapper for chrome.storage.sync.onChanged
- *
- * @see chrome.storage.sync.onChanged
- */
-export const onSyncChange$: Observable<StorageChange> = getOnChange(chrome.storage.sync);
+export type WrappedStorage = {
+  id: string;
+  values: RecursiveRecord;
+  setItem: (key: string, value: unknown) => void;
+  removeItem: (key: string) => void;
+  clear: () => void;
+};
+
+declare global {
+  interface Window {
+    browser: Record<string, Omit<WrappedStorage, 'getBytesInUse' | 'get' | 'getAll'>>;
+  }
+}
 
 /**
- * Rxjs wrapper for chrome.storage.local.onChanged
- *
- * @see chrome.storage.local.onChanged
+ * This function is used to wrap the storage areas to provide type inference and a more convenient interface.
+ * @param area The storage area to wrap.
+ * @param name The name of the storage area.
  */
-export const onLocalChange$: Observable<StorageChange> = getOnChange(chrome.storage.sync);
+export const storageWrapper = (area: chrome.storage.StorageArea, name: string) => {
+  if (!globalThis?.chrome?.storage) {
+    console.warn('Storage API is not available, using local storage instead.');
+
+    const storage = {
+      id: `browser-${name}-storage`,
+      get values(): RecursiveRecord {
+        const _value = window.localStorage.getItem(this.id);
+        if (!_value) return {};
+        return JSON.parse(_value);
+      },
+      set values(value: unknown) {
+        window.localStorage.setItem(this.id, JSON.stringify(value));
+      },
+      setItem(key: string, value: unknown) {
+        this.values = { ...this.values, [key]: value };
+      },
+      removeItem(key: string) {
+        this.values = { ...this.values, [key]: undefined };
+      },
+      clear() {
+        this.values = {};
+      },
+    };
+
+    window.browser = { ...window.browser, [name]: storage };
+    return {
+      getBytesInUse: async (): Promise<number> => getLocalStorageSize(window.localStorage),
+      getAll: async <T>(regex?: string | RegExp): Promise<T> => (regex ? filterObject(storage.values, regex) : storage.values) as T,
+      get: async <T>(key: string): Promise<T> => storage.values[key] as T,
+      set: async <T>(key: string, value: T): Promise<void> => storage.setItem(key, value),
+      remove: async (key: string): Promise<void> => storage.removeItem(key),
+      removeAll: async (regex: string | RegExp): Promise<void> => {
+        storage.values = reverseFilterObject(storage.values, regex);
+      },
+      clear: async (): Promise<void> => storage.clear(),
+    };
+  }
+  return {
+    getBytesInUse: (): Promise<number> => area.getBytesInUse(),
+    getAll: <T>(regex?: string | RegExp): Promise<T> => area.get().then(data => (regex ? filterObject(data, regex) : data) as T),
+    get: <T>(key: string): Promise<T> => area.get(key).then(({ [key]: value }) => value),
+    set: <T>(key: string, value: T): Promise<void> => area.set({ [key]: value }),
+    remove: (key: string): Promise<void> => area.remove(key),
+    removeAll: async (regex: string | RegExp): Promise<void> => {
+      const data = await area.get();
+      const _regex = typeof regex === 'string' ? new RegExp(regex) : regex;
+      await Promise.all(
+        Object.keys(data).map(key => {
+          if (_regex.test(key)) return area.remove(key);
+          return Promise.resolve();
+        }),
+      );
+    },
+    clear: (): Promise<void> => area.clear(),
+  };
+};
+
+export type StorageArea = ReturnType<typeof storageWrapper>;
+
+/**
+ * This object is used to access the storage areas.
+ */
+export const storage = {
+  sync: storageWrapper(syncStorage, 'sync'),
+  local: storageWrapper(localStorage, 'local'),
+  session: storageWrapper(sessionStorage, 'session'),
+};
+
+export const defaultMaxLocalStorageSize = 10485760;
+
+export const localCache: <T>(key: string, value: T, regex?: string | RegExp) => Promise<void> = async (key, value, regex) => {
+  let inUse = await storage.local.getBytesInUse();
+
+  const max = globalThis?.chrome?.storage?.local.QUOTA_BYTES ?? defaultMaxLocalStorageSize;
+
+  const encoder = new TextEncoder();
+  const payload = encoder.encode(JSON.stringify(value)).length;
+
+  if (payload > max) {
+    console.warn('Payload is too large to store in local storage.', { payload, max, inUse });
+    return Promise.resolve();
+  }
+
+  if (inUse + payload >= max) {
+    console.warn('Local storage is full, clearing cache.', { payload, max, inUse });
+    if (regex) await storage.local.removeAll(regex);
+    else await storage.local.clear();
+  }
+
+  inUse = await storage.local.getBytesInUse();
+  if (inUse + payload >= max) {
+    console.warn('Local storage is still full, skipping cache.', { payload, max, inUse });
+    return Promise.resolve();
+  }
+
+  return storage.local.set(key, value);
+};

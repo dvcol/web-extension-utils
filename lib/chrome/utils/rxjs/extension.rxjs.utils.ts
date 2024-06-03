@@ -2,7 +2,7 @@ import { ProxyLogger } from '@lib/common';
 
 import { fromEventPattern } from 'rxjs';
 
-import type { ContentScript, InstalledDetails } from '../models';
+import type { ContentScript, InstalledDetails } from '@lib/chrome/models/extension.model';
 import type { Observable } from 'rxjs';
 
 type InstalledHandler = (details: InstalledDetails) => void;

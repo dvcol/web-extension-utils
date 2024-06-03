@@ -59,3 +59,18 @@ export const versionCheck = (version: string, compared: string) => {
   const _version = version?.split('.')?.map(Number);
   return versionCompare(_version, _compared);
 };
+
+const regex = /(^\w|[.:]\s\w)/g;
+
+export const sentenceCase = (input?: string) =>
+  input?.toLowerCase().replace(regex, letter => {
+    return letter.toUpperCase();
+  });
+
+export const capitalizeEachWord = (input: string) => input?.toLowerCase().replace(/\b\w/g, match => match.toUpperCase());
+
+export const deCapitalise = (input?: string) => {
+  if (!input?.trim()) return input;
+  if (input !== input.toUpperCase()) return input;
+  return capitalizeEachWord(input);
+};

@@ -2,7 +2,7 @@ import { ProxyLogger } from '@lib/common';
 
 import { forkJoin, Observable, of } from 'rxjs';
 
-import type { ContextMenu, ContextMenuCreate, ContextMenuUpdate } from '../models';
+import type { ContextMenu, ContextMenuCreate, ContextMenuUpdate } from '@lib/chrome/models/context.model';
 import type { Subscriber } from 'rxjs';
 
 /**

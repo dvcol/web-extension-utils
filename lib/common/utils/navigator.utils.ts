@@ -24,3 +24,9 @@ export const isMacOs = () => {
   const platform = navigator?.userAgentData?.platform ?? navigator?.platform;
   return platform.indexOf('mac') !== -1;
 };
+
+/**
+ * Returns the short locale (ISO 639-1) of the current browser.
+ * I.e. 'en' for 'en-US'.
+ */
+export const getShortLocale: () => string = () => navigator?.language?.split('-').at(0) ?? 'en';

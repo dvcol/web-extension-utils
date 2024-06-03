@@ -23,6 +23,163 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/clients/index.cjs",
+      "import": "./dist/clients/index.js",
+      "types": "./dist/clients/index.d.ts"
+    },
+    "./chrome": {
+      "require": "./dist/chrome/index.cjs",
+      "import": "./dist/config/index.js",
+      "types": "./dist/config/index.d.ts"
+    },
+    "./chrome/rxjs": {
+      "require": "./dist/chrome/rxjs/index.cjs",
+      "import": "./dist/chrome/rxjs/index.js",
+      "types": "./dist/chrome/rxjs/index.d.ts"
+    },
+    "./chrome/rxjs/context": {
+      "require": "./dist/chrome/utils/rxjs/context.utils.cjs",
+      "import": "./dist/chrome/utils/rxjs/context.utils.js",
+      "types": "./dist/chrome/utils/rxjs/context.utils.d.ts"
+    },
+    "./chrome/rxjs/downloads": {
+      "require": "./dist/chrome/utils/rxjs/downloads.utils.cjs",
+      "import": "./dist/chrome/utils/rxjs/downloads.utils.js",
+      "types": "./dist/chrome/utils/rxjs/downloads.utils.d.ts"
+    },
+    "./chrome/rxjs/extension": {
+      "require": "./dist/chrome/utils/rxjs/extension.utils.cjs",
+      "import": "./dist/chrome/utils/rxjs/extension.utils.js",
+      "types": "./dist/chrome/utils/rxjs/extension.utils.d.ts"
+    },
+    "./chrome/rxjs/i18n": {
+      "require": "./dist/chrome/utils/rxjs/i18n.utils.cjs",
+      "import": "./dist/chrome/utils/rxjs/i18n.utils.js",
+      "types": "./dist/chrome/utils/rxjs/i18n.utils.d.ts"
+    },
+    "./chrome/rxjs/message": {
+      "require": "./dist/chrome/utils/rxjs/message.utils.cjs",
+      "import": "./dist/chrome/utils/rxjs/message.utils.js",
+      "types": "./dist/chrome/utils/rxjs/message.utils.d.ts"
+    },
+    "./chrome/rxjs/storage": {
+      "require": "./dist/chrome/utils/rxjs/storage.utils.cjs",
+      "import": "./dist/chrome/utils/rxjs/storage.utils.js",
+      "types": "./dist/chrome/utils/rxjs/storage.utils.d.ts"
+    },
+    "./chrome/rxjs/tabs": {
+      "require": "./dist/chrome/utils/rxjs/tabs.utils.cjs",
+      "import": "./dist/chrome/utils/rxjs/tabs.utils.js",
+      "types": "./dist/chrome/utils/rxjs/tabs.utils.d.ts"
+    },
+    "./chrome/i18n": {
+      "require": "./dist/chrome/utils/i18n.utils.cjs",
+      "import": "./dist/chrome/utils/i18n.utils.js",
+      "types": "./dist/chrome/utils/i18n.utils.d.ts"
+    },
+    "./chrome/runtime": {
+      "require": "./dist/chrome/utils/runtime.utils.cjs",
+      "import": "./dist/chrome/utils/runtime.utils.js",
+      "types": "./dist/chrome/utils/runtime.utils.d.ts"
+    },
+    "./chrome/storage": {
+      "require": "./dist/chrome/utils/storage.utils.cjs",
+      "import": "./dist/chrome/utils/storage.utils.js",
+      "types": "./dist/chrome/utils/storage.utils.d.ts"
+    },
+    "./chrome/tabs": {
+      "require": "./dist/chrome/utils/tabs.utils.cjs",
+      "import": "./dist/chrome/utils/tabs.utils.js",
+      "types": "./dist/chrome/utils/tabs.utils.d.ts"
+    },
+    "./common": {
+      "require": "./dist/common/index.cjs",
+      "import": "./dist/common/index.js",
+      "types": "./dist/common/index.d.ts"
+    },
+    "./common/array": {
+      "require": "./dist/common/utils/array.utils.cjs",
+      "import": "./dist/common/utils/array.utils.js",
+      "types": "./dist/common/utils/array.utils.d.ts"
+    },
+    "./common/compare": {
+      "require": "./dist/common/utils/compare.utils.cjs",
+      "import": "./dist/common/utils/compare.utils.js",
+      "types": "./dist/common/utils/compare.utils.d.ts"
+    },
+    "./common/date": {
+      "require": "./dist/common/utils/date.utils.cjs",
+      "import": "./dist/common/utils/date.utils.js",
+      "types": "./dist/common/utils/date.utils.d.ts"
+    },
+    "./common/debounce": {
+      "require": "./dist/common/utils/debounce.utils.cjs",
+      "import": "./dist/common/utils/debounce.utils.js",
+      "types": "./dist/common/utils/debounce.utils.d.ts"
+    },
+    "./common/file": {
+      "require": "./dist/common/utils/file.utils.cjs",
+      "import": "./dist/common/utils/file.utils.js",
+      "types": "./dist/common/utils/file.utils.d.ts"
+    },
+    "./common/logger": {
+      "require": "./dist/common/utils/logger.utils.cjs",
+      "import": "./dist/common/utils/logger.utils.js",
+      "types": "./dist/common/utils/logger.utils.d.ts"
+    },
+    "./common/math": {
+      "require": "./dist/common/utils/math.utils.cjs",
+      "import": "./dist/common/utils/math.utils.js",
+      "types": "./dist/common/utils/math.utils.d.ts"
+    },
+    "./common/navigator": {
+      "require": "./dist/common/utils/navigator.utils.cjs",
+      "import": "./dist/common/utils/navigator.utils.js",
+      "types": "./dist/common/utils/navigator.utils.d.ts"
+    },
+    "./common/rxjs": {
+      "require": "./dist/common/utils/rxjs.utils.cjs",
+      "import": "./dist/common/utils/rxjs.utils.js",
+      "types": "./dist/common/utils/rxjs.utils.d.ts"
+    },
+    "./common/string": {
+      "require": "./dist/common/utils/string.utils.cjs",
+      "import": "./dist/common/utils/string.utils.js",
+      "types": "./dist/common/utils/string.utils.d.ts"
+    },
+    "./common/style": {
+      "require": "./dist/common/utils/style.utils.cjs",
+      "import": "./dist/common/utils/style.utils.js",
+      "types": "./dist/common/utils/style.utils.d.ts"
+    },
+    "./common/typescript": {
+      "require": "./dist/common/utils/typescript.utils.cjs",
+      "import": "./dist/common/utils/typescript.utils.js",
+      "types": "./dist/common/utils/typescript.utils.d.ts"
+    },
+    "./common/window": {
+      "require": "./dist/common/utils/window.utils.cjs",
+      "import": "./dist/common/utils/window.utils.js",
+      "types": "./dist/common/utils/window.utils.d.ts"
+    },
+    "./http": {
+      "require": "./dist/http/index.cjs",
+      "import": "./dist/http/index.js",
+      "types": "./dist/http/index.d.ts"
+    },
+    "./http/build-url": {
+      "require": "./dist/http/utils/build-url.utils.cjs",
+      "import": "./dist/http/utils/build-url.utils.js",
+      "types": "./dist/http/utils/build-url.utils.d.ts"
+    },
+    "./http/rxjs-fetch": {
+      "require": "./dist/http/utils/rxjs-fetch.utils.cjs",
+      "import": "./dist/http/utils/rxjs-fetch.utils.js",
+      "types": "./dist/http/utils/rxjs-fetch.utils.d.ts"
+    }
+  },
   "files": [
     "*.md",
     "LICENSE",
@@ -52,9 +209,10 @@
     "@dvcol/eslint-plugin-presets": "^1.1.1",
     "@types/chrome": "^0.0.268",
     "eslint": "^8.13.0",
+    "eslint-plugin-prettier": "^5.1.2",
     "extract-changelog-release": "^1.0.2",
     "husky": "^8.0.0",
-    "prettier": "^2.6.2",
+    "prettier": "^3.3.0",
     "standard-version": "^9.3.2",
     "tsup": "^6.0.0",
     "typescript": "^5.0.2"
