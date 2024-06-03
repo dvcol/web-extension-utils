@@ -20,7 +20,7 @@
     "node": ">=16",
     "pnpm": ">= 6.32.0"
   },
-  "packageManager": "pnpm@9.1.0",
+  "packageManager": "pnpm@9.1.4",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
