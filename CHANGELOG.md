@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/dvcol/web-extension-utils/compare/v2.3.4...v2.4.0) (2024-06-03)
+
+
+### Features
+
+* **typescript:** adds recursive partial util ([dc40fdb](https://github.com/dvcol/web-extension-utils/commit/dc40fdbc6011918361155c66866abad87aaa603a))
+* **utils:** add more utils and rework exports ([73a9ef2](https://github.com/dvcol/web-extension-utils/commit/73a9ef2f9d472aeec8c2ad40388e12cf875e39ce))
+
 ### [2.3.4](https://github.com/dvcol/web-extension-utils/compare/v2.3.3...v2.3.4) (2023-04-01)
 
 ### [2.3.3](https://github.com/dvcol/web-extension-utils/compare/v2.3.2...v2.3.3) (2023-03-22)
