@@ -121,9 +121,9 @@
       "types": "./dist/node/index.d.ts"
     },
     "./node/file": {
-      "require": "./dist/common/utils/file.utils.cjs",
-      "import": "./dist/common/utils/file.utils.js",
-      "types": "./dist/common/utils/file.utils.d.ts"
+      "require": "./dist/node/utils/file.utils.cjs",
+      "import": "./dist/node/utils/file.utils.js",
+      "types": "./dist/node/utils/file.utils.d.ts"
     }
   },
   "files": [
