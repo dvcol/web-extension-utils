@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/dvcol/web-extension-utils/compare/v2.4.0...v3.0.0) (2024-06-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** extracts common utils to dedicated package
+
+### Features
+
+* **deps:** extracts common utils to dedicated package ([2980651](https://github.com/dvcol/web-extension-utils/commit/2980651a19f6ce5834be654dc0cd9c5849b24530))
+
 ## [2.4.0](https://github.com/dvcol/web-extension-utils/compare/v2.3.4...v2.4.0) (2024-06-03)
 
 
