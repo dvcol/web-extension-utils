@@ -100,85 +100,30 @@
       "import": "./dist/common/index.js",
       "types": "./dist/common/index.d.ts"
     },
-    "./common/array": {
-      "require": "./dist/common/utils/array.utils.cjs",
-      "import": "./dist/common/utils/array.utils.js",
-      "types": "./dist/common/utils/array.utils.d.ts"
+    "./http": {
+      "require": "./dist/http/index.cjs",
+      "import": "./dist/http/index.js",
+      "types": "./dist/http/index.d.ts"
     },
-    "./common/compare": {
-      "require": "./dist/common/utils/compare.utils.cjs",
-      "import": "./dist/common/utils/compare.utils.js",
-      "types": "./dist/common/utils/compare.utils.d.ts"
-    },
-    "./common/date": {
-      "require": "./dist/common/utils/date.utils.cjs",
-      "import": "./dist/common/utils/date.utils.js",
-      "types": "./dist/common/utils/date.utils.d.ts"
-    },
-    "./common/debounce": {
-      "require": "./dist/common/utils/debounce.utils.cjs",
-      "import": "./dist/common/utils/debounce.utils.js",
-      "types": "./dist/common/utils/debounce.utils.d.ts"
-    },
-    "./common/file": {
-      "require": "./dist/common/utils/file.utils.cjs",
-      "import": "./dist/common/utils/file.utils.js",
-      "types": "./dist/common/utils/file.utils.d.ts"
-    },
-    "./common/logger": {
-      "require": "./dist/common/utils/logger.utils.cjs",
-      "import": "./dist/common/utils/logger.utils.js",
-      "types": "./dist/common/utils/logger.utils.d.ts"
-    },
-    "./common/math": {
-      "require": "./dist/common/utils/math.utils.cjs",
-      "import": "./dist/common/utils/math.utils.js",
-      "types": "./dist/common/utils/math.utils.d.ts"
-    },
-    "./common/navigator": {
-      "require": "./dist/common/utils/navigator.utils.cjs",
-      "import": "./dist/common/utils/navigator.utils.js",
-      "types": "./dist/common/utils/navigator.utils.d.ts"
+    "./http/rxjs-fetch": {
+      "require": "./dist/http/utils/rxjs-fetch.utils.cjs",
+      "import": "./dist/http/utils/rxjs-fetch.utils.js",
+      "types": "./dist/http/utils/rxjs-fetch.utils.d.ts"
     },
     "./common/rxjs": {
       "require": "./dist/common/utils/rxjs.utils.cjs",
       "import": "./dist/common/utils/rxjs.utils.js",
       "types": "./dist/common/utils/rxjs.utils.d.ts"
     },
-    "./common/string": {
-      "require": "./dist/common/utils/string.utils.cjs",
-      "import": "./dist/common/utils/string.utils.js",
-      "types": "./dist/common/utils/string.utils.d.ts"
+    "./node": {
+      "require": "./dist/node/index.cjs",
+      "import": "./dist/node/index.js",
+      "types": "./dist/node/index.d.ts"
     },
-    "./common/style": {
-      "require": "./dist/common/utils/style.utils.cjs",
-      "import": "./dist/common/utils/style.utils.js",
-      "types": "./dist/common/utils/style.utils.d.ts"
-    },
-    "./common/typescript": {
-      "require": "./dist/common/utils/typescript.utils.cjs",
-      "import": "./dist/common/utils/typescript.utils.js",
-      "types": "./dist/common/utils/typescript.utils.d.ts"
-    },
-    "./common/window": {
-      "require": "./dist/common/utils/window.utils.cjs",
-      "import": "./dist/common/utils/window.utils.js",
-      "types": "./dist/common/utils/window.utils.d.ts"
-    },
-    "./http": {
-      "require": "./dist/http/index.cjs",
-      "import": "./dist/http/index.js",
-      "types": "./dist/http/index.d.ts"
-    },
-    "./http/build-url": {
-      "require": "./dist/http/utils/build-url.utils.cjs",
-      "import": "./dist/http/utils/build-url.utils.js",
-      "types": "./dist/http/utils/build-url.utils.d.ts"
-    },
-    "./http/rxjs-fetch": {
-      "require": "./dist/http/utils/rxjs-fetch.utils.cjs",
-      "import": "./dist/http/utils/rxjs-fetch.utils.js",
-      "types": "./dist/http/utils/rxjs-fetch.utils.d.ts"
+    "./node/file": {
+      "require": "./dist/common/utils/file.utils.cjs",
+      "import": "./dist/common/utils/file.utils.js",
+      "types": "./dist/common/utils/file.utils.d.ts"
     }
   },
   "files": [
@@ -200,6 +145,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@dvcol/common-utils": "^1.2.0",
     "fast-glob": "^3.2.12",
     "fs-extra": "^11.1.0",
     "rxjs": "^7.8.0"

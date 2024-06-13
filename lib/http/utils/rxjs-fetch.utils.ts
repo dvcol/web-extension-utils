@@ -1,11 +1,11 @@
-import { ProxyLogger } from '@lib/common';
-import { buildUrl } from '@lib/http/utils';
+import { ProxyLogger } from '@dvcol/common-utils/common/logger';
+import { buildUrl } from '@dvcol/common-utils/http/build-url';
 
 import { throwError } from 'rxjs';
 
 import { fromFetch } from 'rxjs/fetch';
 
-import type { BaseHttpRequest } from '@lib/http/models';
+import type { BaseHttpRequest } from '@dvcol/common-utils/http/models';
 import type { Observable } from 'rxjs';
 
 /**
@@ -20,7 +20,7 @@ export const rxFetch = <T>({ url, params, redirect, ...init }: BaseHttpRequest):
   try {
     _url = buildUrl(url, params).toString();
   } catch (error) {
-    ProxyLogger.debug('Failed to build url for ', url, params);
+    ProxyLogger.logger.debug('Failed to build url for ', url, params);
     return throwError(() => error);
   }
   return fromFetch<T>(_url, {

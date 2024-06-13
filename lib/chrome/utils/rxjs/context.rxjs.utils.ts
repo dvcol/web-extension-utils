@@ -1,4 +1,4 @@
-import { ProxyLogger } from '@lib/common';
+import { ProxyLogger } from '@dvcol/common-utils/common/logger';
 
 import { forkJoin, Observable, of } from 'rxjs';
 
@@ -11,7 +11,7 @@ import type { Subscriber } from 'rxjs';
  */
 const updateContextMenu = (id: string, updates: ContextMenuUpdate, subscriber: Subscriber<void>) =>
   chrome.contextMenus.update(id, updates, () => {
-    ProxyLogger.debug(`Context menu '${id}' updated`, { id, updates });
+    ProxyLogger.logger.debug(`Context menu '${id}' updated`, { id, updates });
     subscriber.next();
     subscriber.complete();
   });
@@ -24,12 +24,12 @@ export function saveContextMenu(menu: ContextMenu, update?: boolean): Observable
   return new Observable<void>(subscriber => {
     const { id, ...updates } = menu;
     if (update) {
-      ProxyLogger.debug(`Context menu '${id}' updated`, { id, updates });
+      ProxyLogger.logger.debug(`Context menu '${id}' updated`, { id, updates });
       updateContextMenu(id, updates as ContextMenuUpdate, subscriber);
     } else {
       const { onclick, ...create } = menu;
       chrome.contextMenus.create(create as ContextMenuCreate, () => {
-        ProxyLogger.debug(`Context menu '${id}' created`, { id, updates });
+        ProxyLogger.logger.debug(`Context menu '${id}' created`, { id, updates });
         updateContextMenu(id, updates as ContextMenuUpdate, subscriber);
       });
     }
@@ -42,9 +42,9 @@ export function saveContextMenu(menu: ContextMenu, update?: boolean): Observable
  */
 export function removeContextMenu(id: string): Observable<void> {
   return new Observable<void>(subscriber => {
-    ProxyLogger.debug(`removing context menu '${id}'`);
+    ProxyLogger.logger.debug(`removing context menu '${id}'`);
     chrome.contextMenus.remove(id, () => {
-      ProxyLogger.debug(`Context menu '${id}' removed`);
+      ProxyLogger.logger.debug(`Context menu '${id}' removed`);
       subscriber.next();
       subscriber.complete();
     });

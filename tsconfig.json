@@ -4,7 +4,7 @@
     "target": "esNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "sourceMap": true,
     "esModuleInterop": true,
