@@ -154,7 +154,7 @@
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "@dvcol/eslint-plugin-presets": "^1.1.1",
-    "@types/chrome": "^0.0.268",
+    "@types/chrome": "^0.0.269",
     "eslint": "^8.13.0",
     "eslint-plugin-prettier": "^5.1.2",
     "extract-changelog-release": "^1.0.2",
