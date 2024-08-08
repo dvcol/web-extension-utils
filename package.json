@@ -2,6 +2,7 @@
   "name": "@dvcol/web-extension-utils",
   "type": "module",
   "version": "3.0.1",
+  "packageManager": "pnpm@9.7.0",
   "description": "Basic presets for stylelint",
   "homepage": "https://github.com/dvcol/web-extension-utils",
   "bugs": "https://github.com/dvcol/web-extension-utils/issues",
@@ -20,7 +21,6 @@
     "node": ">=16",
     "pnpm": ">= 6.32.0"
   },
-  "packageManager": "pnpm@9.7.0",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -34,6 +34,11 @@
       "require": "./dist/chrome/index.cjs",
       "import": "./dist/config/index.js",
       "types": "./dist/config/index.d.ts"
+    },
+    "./chrome/models": {
+      "require": "./dist/chrome/models/index.cjs",
+      "import": "./dist/chrome/models/index.js",
+      "types": "./dist/chrome/models/index.d.ts"
     },
     "./chrome/rxjs": {
       "require": "./dist/chrome/rxjs/index.cjs",
@@ -75,10 +80,25 @@
       "import": "./dist/chrome/utils/rxjs/tabs.utils.js",
       "types": "./dist/chrome/utils/rxjs/tabs.utils.d.ts"
     },
+    "./chrome/action": {
+      "require": "./dist/chrome/utils/action.utils.cjs",
+      "import": "./dist/chrome/utils/action.utils.js",
+      "types": "./dist/chrome/utils/action.utils.d.ts"
+    },
+    "./chrome/context": {
+      "require": "./dist/chrome/utils/context.utils.cjs",
+      "import": "./dist/chrome/utils/context.utils.js",
+      "types": "./dist/chrome/utils/context.utils.d.ts"
+    },
     "./chrome/i18n": {
       "require": "./dist/chrome/utils/i18n.utils.cjs",
       "import": "./dist/chrome/utils/i18n.utils.js",
       "types": "./dist/chrome/utils/i18n.utils.d.ts"
+    },
+    "./chrome/message": {
+      "require": "./dist/chrome/utils/message.utils.cjs",
+      "import": "./dist/chrome/utils/message.utils.js",
+      "types": "./dist/chrome/utils/message.utils.d.ts"
     },
     "./chrome/runtime": {
       "require": "./dist/chrome/utils/runtime.utils.cjs",
@@ -99,6 +119,11 @@
       "require": "./dist/common/index.cjs",
       "import": "./dist/common/index.js",
       "types": "./dist/common/index.d.ts"
+    },
+    "./common/models": {
+      "require": "./dist/common/models/index.cjs",
+      "import": "./dist/common/models/index.js",
+      "types": "./dist/common/models/index.d.ts"
     },
     "./http": {
       "require": "./dist/http/index.cjs",
@@ -145,7 +170,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@dvcol/common-utils": "^1.2.0",
+    "@dvcol/common-utils": "^1.7.0",
     "fast-glob": "^3.2.12",
     "fs-extra": "^11.1.0",
     "rxjs": "^7.8.0"
@@ -153,7 +178,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
-    "@dvcol/eslint-plugin-presets": "^1.1.1",
+    "@dvcol/eslint-plugin-presets": "^1.3.11",
     "@types/chrome": "^0.0.269",
     "eslint": "^8.13.0",
     "eslint-plugin-prettier": "^5.1.2",

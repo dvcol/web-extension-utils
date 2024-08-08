@@ -1,4 +1,7 @@
+export type EventTypes = `${chrome.runtime.OnInstalledReason}`;
 export type InstalledDetails = chrome.runtime.InstalledDetails;
+export type VersionUpdateDetails = InstalledDetails & { nextVersion: string };
+export type VersionUpdateCallback = (details: VersionUpdateDetails) => void;
 
 export type Manifest = chrome.runtime.Manifest;
 export type ManifestV2 = chrome.runtime.ManifestV2;

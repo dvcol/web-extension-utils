@@ -5,17 +5,17 @@ import { getActiveTab } from '@lib/chrome/utils/rxjs';
 import { filter, fromEventPattern, Observable, switchMap, throwError } from 'rxjs';
 
 import type {
+  ChromeConnectListener,
   ChromeMessage,
   ChromeMessageHandler,
+  ChromeMessageListener,
   ChromeMessagePayload,
   ChromeMessageType,
+  ChromePort,
   ChromeResponse,
   ChromeResponsePayload,
 } from '@lib/chrome/models/message.model';
 import type { Subscriber } from 'rxjs';
-
-type MessageSender = chrome.runtime.MessageSender;
-type Port = chrome.runtime.Port;
 
 /**
  * Rxjs wrapper for chrome.runtime.onMessage event listener
@@ -33,7 +33,7 @@ export const onMessage = <
 ): Observable<ChromeMessageHandler<T, P, R>> =>
   fromEventPattern<ChromeMessageHandler<T, P, R>>(
     handler => {
-      const wrapper = (message: ChromeMessage<T, P>, sender: MessageSender, sendResponse: (response?: ChromeResponse<R>) => void) => {
+      const wrapper: ChromeMessageListener<T, P, R> = (message, sender, sendResponse) => {
         handler({ message, sender, sendResponse });
         return async;
       };
@@ -48,8 +48,8 @@ export const onMessage = <
  * @param subscriber the subscriber to notify
  */
 const sendMessageCallback =
-  <R>(subscriber: Subscriber<R>) =>
-  (response: any) => {
+  <R extends ChromeResponsePayload = ChromeResponsePayload>(subscriber: Subscriber<R>) =>
+  (response: ChromeResponse<R> | any) => {
     if (response?.success === false) {
       subscriber.error(response?.error);
     } else if (response?.success) {
@@ -95,10 +95,10 @@ export const sendTabMessage = <
  * @param types optional type filtering
  * @see chrome.runtime.onConnect
  */
-export const onConnect = <T extends string>(types?: T[], async = true): Observable<Port> =>
-  fromEventPattern<Port>(
+export const onConnect = <T extends string>(types?: T[], async = true): Observable<ChromePort> =>
+  fromEventPattern<ChromePort>(
     handler => {
-      const wrapper = (port: Port) => {
+      const wrapper: ChromeConnectListener = port => {
         handler(port);
         return async;
       };

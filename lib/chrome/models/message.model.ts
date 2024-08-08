@@ -1,4 +1,6 @@
-type MessageSender = chrome.runtime.MessageSender;
+export type ChromeMessageOptions = chrome.runtime.MessageOptions;
+export type ChromeMessageSender = chrome.runtime.MessageSender;
+export type ChromePort = chrome.runtime.Port;
 
 /**
  * Type union of possible message
@@ -37,6 +39,18 @@ export type ChromeResponse<P extends ChromeResponsePayload = ChromeResponsePaylo
  */
 export type ChromeMessageHandler<T extends ChromeMessageType, P extends ChromeMessagePayload, R extends ChromeResponsePayload> = {
   message: ChromeMessage<T, P>;
-  sender: MessageSender;
+  sender: ChromeMessageSender;
   sendResponse: (response?: ChromeResponse<R>) => void;
 };
+
+export type ChromeMessageListener<
+  T extends ChromeMessageType = ChromeMessageType,
+  P extends ChromeMessagePayload = ChromeMessagePayload,
+  R extends ChromeResponsePayload = ChromeResponsePayload,
+> = (
+  message: ChromeMessage<T, P>,
+  sender: ChromeMessageSender,
+  sendResponse: (response?: ChromeResponse<R>) => void,
+) => boolean | void | PromiseLike<boolean | void>;
+
+export type ChromeConnectListener = (port: ChromePort) => boolean | void | PromiseLike<boolean | void>;
