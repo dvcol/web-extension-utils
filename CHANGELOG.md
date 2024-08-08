@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/dvcol/web-extension-utils/compare/v3.0.1...v3.1.0) (2024-08-08)
+
+
+### Features
+
+* **chrome:** adds context, action and message utils ([a6fed61](https://github.com/dvcol/web-extension-utils/commit/a6fed613368ec67a58605cd655383b059895269c))
+* **chrome:** adds to action utils ([f45c03f](https://github.com/dvcol/web-extension-utils/commit/f45c03ffe1883d70929402b2598c0e7b2fff4871))
+
 ### [3.0.1](https://github.com/dvcol/web-extension-utils/compare/v3.0.0...v3.0.1) (2024-06-13)
 
 
