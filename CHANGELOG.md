@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.2](https://github.com/dvcol/web-extension-utils/compare/v3.3.1...v3.3.2) (2024-08-09)
+
+
+### Bug Fixes
+
+* **chrome:** add null check on sendMessage utils ([5100ff8](https://github.com/dvcol/web-extension-utils/commit/5100ff89828e2c4a0d5e2ae1704e8668ca4e9f29))
+
 ### [3.3.1](https://github.com/dvcol/web-extension-utils/compare/v3.3.0...v3.3.1) (2024-08-09)
 
 
