@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/dvcol/web-extension-utils/compare/v3.1.0...v3.2.0) (2024-08-09)
+
+
+### Features
+
+* **chrome:** adds cookie utils ([a3ccc39](https://github.com/dvcol/web-extension-utils/commit/a3ccc39d11a7d6497bfb4d277d10f441c4273379))
+
 ## [3.1.0](https://github.com/dvcol/web-extension-utils/compare/v3.0.1...v3.1.0) (2024-08-08)
 
 
