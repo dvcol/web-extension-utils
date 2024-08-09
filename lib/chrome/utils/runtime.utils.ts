@@ -13,16 +13,16 @@ export const runtime: typeof chrome.runtime | undefined = globalThis?.chrome?.ru
  * @see chrome.runtime.id
  * @see [chrome.runtime.id](https://developer.chrome.com/docs/extensions/reference/runtime/#property-id)
  */
-export const chromeRuntimeId: typeof chrome.runtime.id | undefined = globalThis?.chrome?.runtime?.id;
+export const chromeRuntimeId: typeof chrome.runtime.id | undefined = runtime?.id;
 
 /**
  * Get the extension's manifest details.
  * @see chrome.runtime.getManifest
  * @see [chrome.runtime.id](https://developer.chrome.com/docs/extensions/reference/runtime/#property-id)
  */
-export const getManifest: typeof chrome.runtime.getManifest | undefined = globalThis?.chrome?.runtime.getManifest;
+export const getManifest: typeof chrome.runtime.getManifest | undefined = runtime?.getManifest;
 
-export const onInstalled: typeof chrome.runtime.onInstalled | undefined = globalThis?.chrome?.runtime.onInstalled;
+export const onInstalled: typeof chrome.runtime.onInstalled | undefined = runtime?.onInstalled;
 
 /**
  * Wrapper for chrome.runtime.onInstalled event listener
@@ -47,7 +47,7 @@ export const onVersionUpdate = (callback: VersionUpdateCallback, events: EventTy
     if (nextVersion !== details.previousVersion) callback({ ...details, nextVersion });
   }, events);
 
-export const onConnect: typeof chrome.runtime.onConnect | undefined = globalThis?.chrome?.runtime.onConnect;
+export const onConnect: typeof chrome.runtime.onConnect | undefined = runtime?.onConnect;
 
 /**
  * Wrapper for chrome.runtime.onConnect event listener

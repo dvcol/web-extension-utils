@@ -9,7 +9,7 @@ import type {
   ChromeResponsePayload,
 } from '@lib/chrome';
 
-export const onMessage: typeof chrome.runtime.onMessage | undefined = globalThis?.chrome?.runtime.onMessage;
+export const onMessage: typeof chrome.runtime.onMessage | undefined = globalThis?.chrome?.runtime?.onMessage;
 
 /**
  * Wrapper for chrome.runtime.onMessage event listener
@@ -57,7 +57,7 @@ export const sendMessageEvent = async <
   return sendMessage<ChromeMessage<T, P>, R>(message, options);
 };
 
-export const sendTabMessage: typeof chrome.tabs.sendMessage | undefined = globalThis?.chrome?.tabs.sendMessage;
+export const sendTabMessage: typeof chrome.tabs.sendMessage | undefined = globalThis?.chrome?.tabs?.sendMessage;
 
 /**
  * Wrapper for chrome.tabs.sendMessage event sender

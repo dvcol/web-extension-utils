@@ -123,7 +123,7 @@ export const defaultMaxLocalStorageSize = 10485760;
 export const localCache: <T>(key: string, value: T, regex?: string | RegExp) => Promise<void> = async (key, value, regex) => {
   let inUse = await storage.local.getBytesInUse();
 
-  const max = globalThis?.chrome?.storage?.local.QUOTA_BYTES ?? defaultMaxLocalStorageSize;
+  const max = localStorage?.QUOTA_BYTES ?? defaultMaxLocalStorageSize;
 
   const encoder = new TextEncoder();
   const payload = encoder.encode(JSON.stringify(value)).length;
