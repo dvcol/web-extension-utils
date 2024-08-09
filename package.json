@@ -95,6 +95,11 @@
       "import": "./dist/chrome/utils/cookie.utils.js",
       "types": "./dist/chrome/utils/cookie.utils.d.ts"
     },
+    "./chrome/error": {
+      "require": "./dist/chrome/utils/error.utils.cjs",
+      "import": "./dist/chrome/utils/error.utils.js",
+      "types": "./dist/chrome/utils/error.utils.d.ts"
+    },
     "./chrome/i18n": {
       "require": "./dist/chrome/utils/i18n.utils.cjs",
       "import": "./dist/chrome/utils/i18n.utils.js",

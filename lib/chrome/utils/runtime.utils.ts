@@ -1,3 +1,5 @@
+import { ApiUnavailableError } from '@lib/chrome/utils/error.utils';
+
 import type { EventTypes, InstalledDetails, VersionUpdateCallback } from '@lib/chrome/models/extension.model';
 import type { ChromeConnectListener } from '@lib/chrome/models/message.model';
 
@@ -22,8 +24,15 @@ export const getManifest: typeof chrome.runtime.getManifest | undefined = global
 
 export const onInstalled: typeof chrome.runtime.onInstalled | undefined = globalThis?.chrome?.runtime.onInstalled;
 
+/**
+ * Wrapper for chrome.runtime.onInstalled event listener
+ * @param callback
+ * @param events
+ * @throws ApiUnavailableError
+ * @see chrome.runtime.onInstalled
+ */
 export const onInstalledEvent = (callback: (details: InstalledDetails) => void, events?: EventTypes[]) => {
-  if (!onInstalled) throw new Error('chrome.runtime.onInstalled is not available');
+  if (!onInstalled) throw new ApiUnavailableError('chrome.runtime.onInstalled is not available');
   onInstalled.addListener(details => {
     if (!events?.length) return callback(details);
     if (events.includes(details.reason)) callback(details);
@@ -42,10 +51,12 @@ export const onConnect: typeof chrome.runtime.onConnect | undefined = globalThis
 
 /**
  * Wrapper for chrome.runtime.onConnect event listener
+ * @param callback
+ * @throws ApiUnavailableError
  * @see chrome.runtime.onConnect
  */
 export const onConnectEvent = (callback: ChromeConnectListener) => {
-  if (!onConnect) throw new Error('chrome.runtime.onConnect is not available');
+  if (!onConnect) throw new ApiUnavailableError('chrome.runtime.onConnect is not available');
   onConnect.addListener(callback);
   return () => onConnect.removeListener(callback);
 };

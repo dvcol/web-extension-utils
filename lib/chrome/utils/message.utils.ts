@@ -1,3 +1,5 @@
+import { ApiUnavailableError } from '@lib/chrome/utils/error.utils';
+
 import type {
   ChromeMessage,
   ChromeMessageListener,
@@ -11,6 +13,7 @@ export const onMessage: typeof chrome.runtime.onMessage | undefined = globalThis
 
 /**
  * Wrapper for chrome.runtime.onMessage event listener
+ * @throws ApiUnavailableError
  * @see chrome.runtime.onMessage
  */
 export const onMessageEvent = <
@@ -21,7 +24,7 @@ export const onMessageEvent = <
   callback: ChromeMessageListener<T, P, R>,
   types?: ChromeMessageType | ChromeMessageType[],
 ) => {
-  if (!onMessage) throw new Error('chrome.runtime.onMessage is not available');
+  if (!onMessage) throw new ApiUnavailableError('chrome.runtime.onMessage is not available');
 
   let _callback: ChromeMessageListener<T, P, R> = callback;
   if (types?.length) {
@@ -39,6 +42,7 @@ export const sendMessage: typeof chrome.runtime.sendMessage | undefined = global
 
 /**
  * Wrapper for chrome.runtime.sendMessage event sender
+ * @throws ApiUnavailableError
  * @see chrome.runtime.sendMessage
  */
 export const sendMessageEvent = async <
@@ -49,12 +53,19 @@ export const sendMessageEvent = async <
   message: ChromeMessage<T, P>,
   options?: ChromeMessageOptions,
 ) => {
-  if (!sendMessage) throw new Error('chrome.runtime.sendMessage is not available');
+  if (!sendMessage) throw new ApiUnavailableError('chrome.runtime.sendMessage is not available');
   return sendMessage<ChromeMessage<T, P>, R>(message, options);
 };
 
 export const sendTabMessage: typeof chrome.tabs.sendMessage | undefined = globalThis?.chrome?.tabs.sendMessage;
 
+/**
+ * Wrapper for chrome.tabs.sendMessage event sender
+ * @param tabId
+ * @param message
+ * @throws ApiUnavailableError
+ * @see chrome.tabs.sendMessage
+ */
 export const sendTabMessageEvent = async <
   T extends ChromeMessageType = ChromeMessageType,
   P extends ChromeMessagePayload = ChromeMessagePayload,
@@ -63,6 +74,6 @@ export const sendTabMessageEvent = async <
   tabId: number,
   message: ChromeMessage<T, P>,
 ) => {
-  if (!sendTabMessage) throw new Error('chrome.tabs.sendMessage is not available');
+  if (!sendTabMessage) throw new ApiUnavailableError('chrome.tabs.sendMessage is not available');
   return sendTabMessage<ChromeMessage<T, P>, R>(tabId, message);
 };
