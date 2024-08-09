@@ -90,6 +90,11 @@
       "import": "./dist/chrome/utils/context.utils.js",
       "types": "./dist/chrome/utils/context.utils.d.ts"
     },
+    "./chrome/cookie": {
+      "require": "./dist/chrome/utils/cookie.utils.cjs",
+      "import": "./dist/chrome/utils/cookie.utils.js",
+      "types": "./dist/chrome/utils/cookie.utils.d.ts"
+    },
     "./chrome/i18n": {
       "require": "./dist/chrome/utils/i18n.utils.cjs",
       "import": "./dist/chrome/utils/i18n.utils.js",
