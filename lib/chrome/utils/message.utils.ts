@@ -38,7 +38,7 @@ export const onMessageEvent = <
   return () => onMessage.removeListener(_callback);
 };
 
-export const sendMessage: typeof chrome.runtime.sendMessage | undefined = globalThis?.chrome?.runtime.sendMessage;
+export const sendMessage: typeof chrome.runtime.sendMessage | undefined = globalThis?.chrome?.runtime?.sendMessage;
 
 /**
  * Wrapper for chrome.runtime.sendMessage event sender
