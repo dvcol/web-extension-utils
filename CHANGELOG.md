@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.4.1](https://github.com/dvcol/web-extension-utils/compare/v3.4.0...v3.4.1) (2024-09-01)
+
+
+### Bug Fixes
+
+* **storage:** update type signature ([10662ef](https://github.com/dvcol/web-extension-utils/commit/10662ef9e3979ca6ddf4ce5aef9bcff5b30369fd))
+
 ## [3.4.0](https://github.com/dvcol/web-extension-utils/compare/v3.3.2...v3.4.0) (2024-09-01)
 
 
