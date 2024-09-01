@@ -62,7 +62,9 @@ export type StorageAreaWrapper = {
  */
 export const storageWrapper = (name: string, area?: chrome.storage.StorageArea, prefix = 'app'): StorageAreaWrapper => {
   if (!area) {
-    console.warn('Storage API is not provided or available, using local storage instead.', window[prefix]);
+    console.warn('Storage API is not provided or available, using local storage instead.');
+
+    if (window[prefix]?.[name]) return window[prefix][name];
 
     const callbacks = new Set<StorageChangeCallback>();
 
@@ -140,10 +142,17 @@ export const storageWrapper = (name: string, area?: chrome.storage.StorageArea, 
 /**
  * This object is used to access the storage areas.
  */
-export const storage = {
-  sync: storageWrapper('sync', syncStorage),
-  local: storageWrapper('local', localStorage),
-  session: storageWrapper('session', sessionStorage),
+export const getStorage = (type: 'local' | 'sync' | 'session' = 'local'): StorageAreaWrapper => {
+  switch (type) {
+    case 'local':
+      return storageWrapper('local', localStorage);
+    case 'sync':
+      return storageWrapper('sync', syncStorage);
+    case 'session':
+      return storageWrapper('session', sessionStorage);
+    default:
+      throw new Error(`Storage type "${type}" is not supported.`);
+  }
 };
 
 /**
@@ -181,7 +190,7 @@ export const setStorageWrapper: <T>(key: string, value: T, regex?: string | RegE
   key,
   value,
   regex,
-  area = storage.local,
+  area = getStorage('local'),
 ) => {
   let inUse = await area.getBytesInUse();
 

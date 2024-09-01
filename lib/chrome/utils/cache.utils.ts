@@ -1,6 +1,6 @@
 import { CacheRetention } from '@dvcol/common-utils/common/cache';
 
-import { setStorageWrapper, storage, type StorageAreaWrapper } from '@lib/chrome';
+import { getStorage, setStorageWrapper, type StorageAreaWrapper } from '@lib/chrome';
 
 import type { CacheStore, CacheStoreEntity } from '@dvcol/common-utils/common';
 
@@ -17,7 +17,7 @@ export class ChromeCacheStore<T> implements CacheStore<T> {
     saveAccess = false,
     evictOnError = true,
     retention = CacheRetention.Month,
-    store = storage.local,
+    store = getStorage('local'),
     prefix = 'http-cache',
   }: {
     saveRetention?: boolean;
