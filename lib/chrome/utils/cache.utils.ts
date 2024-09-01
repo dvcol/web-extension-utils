@@ -1,6 +1,6 @@
 import { CacheRetention } from '@dvcol/common-utils/common/cache';
 
-import { setStorageWrapper, storage, type StorageArea } from '@lib/chrome';
+import { setStorageWrapper, storage, type StorageAreaWrapper } from '@lib/chrome';
 
 import type { CacheStore, CacheStoreEntity } from '@dvcol/common-utils/common';
 
@@ -9,7 +9,7 @@ export class ChromeCacheStore<T> implements CacheStore<T> {
   saveAccess?: boolean;
   evictOnError?: boolean;
   retention?: number;
-  store: StorageArea;
+  store: StorageAreaWrapper;
   prefix: string;
 
   constructor({
@@ -24,7 +24,7 @@ export class ChromeCacheStore<T> implements CacheStore<T> {
     saveAccess?: boolean;
     evictOnError?: boolean;
     retention?: number;
-    store?: StorageArea;
+    store?: StorageAreaWrapper;
     prefix?: string;
   }) {
     this.saveRetention = saveRetention;

@@ -1,19 +1,21 @@
 import type { RecursiveRecord } from '@dvcol/common-utils/common';
 
+export type StorageArea = chrome.storage.StorageArea;
+
 /**
  * @see [chrome.storage.sync](https://developer.chrome.com/docs/extensions/reference/storage/#type-SyncStorageArea)
  */
-export const syncStorage: chrome.storage.SyncStorageArea | undefined = globalThis?.chrome?.storage?.sync;
+export const syncStorage: StorageArea | undefined = globalThis?.chrome?.storage?.sync;
 
 /**
  * @see [chrome.storage.local](https://developer.chrome.com/docs/extensions/reference/storage/#type-LocalStorageArea)
  */
-export const localStorage: chrome.storage.LocalStorageArea | undefined = globalThis?.chrome?.storage?.local;
+export const localStorage: StorageArea | undefined = globalThis?.chrome?.storage?.local;
 
 /**
  * @see [chrome.storage.session](https://developer.chrome.com/docs/extensions/reference/storage/#type-StorageArea)
  */
-export const sessionStorage: chrome.storage.StorageArea | undefined = globalThis?.chrome?.storage?.session;
+export const sessionStorage: StorageArea | undefined = globalThis?.chrome?.storage?.session;
 
 const filterObject = (object: Record<string, unknown>, regex: string | RegExp) =>
   Object.fromEntries(Object.entries(object).filter(([key]) => (typeof regex === 'string' ? new RegExp(regex) : regex).test(key)));
@@ -58,9 +60,9 @@ export type StorageAreaWrapper = {
  * @param name The name of the storage area.
  * @param prefix The prefix to use for the storage area (global app name, defaults to app).
  */
-export const storageWrapper = (area: chrome.storage.StorageArea, name: string, prefix = 'app'): StorageAreaWrapper => {
-  if (!globalThis?.chrome?.storage) {
-    console.warn('Storage API is not available, using local storage instead.');
+export const storageWrapper = (name: string, area?: chrome.storage.StorageArea, prefix = 'app'): StorageAreaWrapper => {
+  if (!area) {
+    console.warn('Storage API is not provided or available, using local storage instead.', window[prefix]);
 
     const callbacks = new Set<StorageChangeCallback>();
 
@@ -135,15 +137,13 @@ export const storageWrapper = (area: chrome.storage.StorageArea, name: string, p
   };
 };
 
-export type StorageArea = ReturnType<typeof storageWrapper>;
-
 /**
  * This object is used to access the storage areas.
  */
 export const storage = {
-  sync: storageWrapper(syncStorage, 'sync'),
-  local: storageWrapper(localStorage, 'local'),
-  session: storageWrapper(sessionStorage, 'session'),
+  sync: storageWrapper('sync', syncStorage),
+  local: storageWrapper('local', localStorage),
+  session: storageWrapper('session', sessionStorage),
 };
 
 /**
