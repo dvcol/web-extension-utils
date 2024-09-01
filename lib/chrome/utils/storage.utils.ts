@@ -62,7 +62,7 @@ export type StorageAreaWrapper = {
  */
 export const storageWrapper = (name: string, area?: chrome.storage.StorageArea, prefix = 'app'): StorageAreaWrapper => {
   if (!area) {
-    console.warn('Storage API is not provided or available, using local storage instead.');
+    console.warn('Storage API is not provided or available, using local storage instead.', { name, prefix });
 
     if (window[prefix]?.[name]) return window[prefix][name];
 
@@ -97,6 +97,7 @@ export const storageWrapper = (name: string, area?: chrome.storage.StorageArea, 
     };
 
     window[prefix] = { ...window[prefix], [name]: storage };
+    console.debug(`Local storage bound to 'window.${prefix}.${name}'.`, { name, prefix, storage: window[prefix][name] });
     return {
       name,
       getBytesInUse: async (): Promise<number> => getLocalStorageSize(window.localStorage),
