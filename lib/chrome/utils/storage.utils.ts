@@ -51,7 +51,7 @@ export type StorageAreaWrapper = {
   remove: (key: string) => Promise<void>;
   removeAll: (regex: string | RegExp) => Promise<void>;
   clear: () => Promise<void>;
-  listen: <T>(callback: StorageChangeCallback<T>) => void;
+  listen: <T>(callback: StorageChangeCallback<T>) => () => void;
 };
 
 /**
