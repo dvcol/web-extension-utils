@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.4.5](https://github.com/dvcol/web-extension-utils/compare/v3.4.4...v3.4.5) (2024-10-24)
+
+
+### Bug Fixes
+
+* **chrome:** add action getter for icon functions ([3f00b02](https://github.com/dvcol/web-extension-utils/commit/3f00b024c1169fafa262d44d9edf44e8147bd86c))
+
 ### [3.4.4](https://github.com/dvcol/web-extension-utils/compare/v3.4.3...v3.4.4) (2024-10-12)
 
 
