@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.5.0](https://github.com/dvcol/web-extension-utils/compare/v3.4.5...v3.5.0) (2025-03-16)
+
+
+### Features
+
+* **side-panel:** adds side-panel nullsafe exports ([6592e71](https://github.com/dvcol/web-extension-utils/commit/6592e7133830e95a6c2867e0436b1052c32f400e))
+
 ### [3.4.5](https://github.com/dvcol/web-extension-utils/compare/v3.4.4...v3.4.5) (2024-10-24)
 
 
