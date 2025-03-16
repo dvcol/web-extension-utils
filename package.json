@@ -115,6 +115,11 @@
       "import": "./dist/chrome/utils/runtime.utils.js",
       "types": "./dist/chrome/utils/runtime.utils.d.ts"
     },
+    "./chrome/side-panel": {
+      "require": "./dist/chrome/utils/side-panel.utils.cjs",
+      "import": "./dist/chrome/utils/side-panel.utils.js",
+      "types": "./dist/chrome/utils/side-panel.utils.d.ts"
+    },
     "./chrome/storage": {
       "require": "./dist/chrome/utils/storage.utils.cjs",
       "import": "./dist/chrome/utils/storage.utils.js",

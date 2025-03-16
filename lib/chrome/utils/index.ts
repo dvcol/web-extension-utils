@@ -5,5 +5,6 @@ export * from './error.utils';
 export * from './i18n.utils';
 export * from './message.utils';
 export * from './runtime.utils';
+export * from './side-panel.utils';
 export * from './storage.utils';
 export * from './tabs.utils';
