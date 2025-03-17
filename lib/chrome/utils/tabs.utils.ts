@@ -1,3 +1,6 @@
+/** @see chrome.tabs */
+export const tabs: typeof chrome.tabs | undefined = globalThis?.chrome?.tabs;
+
 /**
  * Open a new tab with the given options.
  *
@@ -10,4 +13,4 @@ const openTab = (options: chrome.tabs.CreateProperties) => window.open(options.u
 /**
  * @see [chrome.tabs.create](https://developer.chrome.com/docs/extensions/reference/tabs/#method-create)
  */
-export const createTab = (options: chrome.tabs.CreateProperties) => (globalThis?.chrome?.tabs?.create ?? openTab)(options);
+export const createTab = (options: chrome.tabs.CreateProperties) => (tabs?.create ?? openTab)(options);
