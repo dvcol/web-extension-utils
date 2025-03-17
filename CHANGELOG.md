@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.5.1](https://github.com/dvcol/web-extension-utils/compare/v3.5.0...v3.5.1) (2025-03-17)
+
+
+### Bug Fixes
+
+* **tabs:** export base tabs object ([5b483d5](https://github.com/dvcol/web-extension-utils/commit/5b483d5c4b03b17a7115f5cbd2927767a3e87c87))
+
 ## [3.5.0](https://github.com/dvcol/web-extension-utils/compare/v3.4.5...v3.5.0) (2025-03-16)
 
 
