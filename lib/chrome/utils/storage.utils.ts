@@ -46,7 +46,7 @@ export type StorageAreaWrapper = {
   name: string;
   getBytesInUse: () => Promise<number>;
   getAll: <T>(regex?: string | RegExp) => Promise<T>;
-  get: <T>(key: string) => Promise<T>;
+  get: <T>(key: string) => Promise<T | undefined>;
   set: <T>(key: string, value: T) => Promise<void>;
   remove: (key: string) => Promise<void>;
   removeAll: (regex: string | RegExp) => Promise<void>;
@@ -102,7 +102,7 @@ export const storageWrapper = (name: string, area?: chrome.storage.StorageArea, 
       name,
       getBytesInUse: async (): Promise<number> => getLocalStorageSize(window.localStorage),
       getAll: async <T>(regex?: string | RegExp): Promise<T> => (regex ? filterObject(storage.values, regex) : storage.values) as T,
-      get: async <T>(key: string): Promise<T> => storage.values[key] as T | undefined,
+      get: async <T>(key: string): Promise<T | undefined> => storage.values[key] as T | undefined,
       set: async <T>(key: string, value: T): Promise<void> => storage.setItem(key, value),
       remove: async (key: string): Promise<void> => storage.removeItem(key),
       removeAll: async (regex: string | RegExp): Promise<void> => {
