@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.5.2](https://github.com/dvcol/web-extension-utils/compare/v3.5.1...v3.5.2) (2025-04-14)
+
+
+### Bug Fixes
+
+* **storage:** adjust type signatures ([540252f](https://github.com/dvcol/web-extension-utils/commit/540252fd2b349bb51d34747913a26cc798b9f228))
+
 ### [3.5.1](https://github.com/dvcol/web-extension-utils/compare/v3.5.0...v3.5.1) (2025-03-17)
 
 
