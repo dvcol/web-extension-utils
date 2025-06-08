@@ -2,7 +2,7 @@
   "name": "@dvcol/web-extension-utils",
   "type": "module",
   "version": "3.5.3",
-  "packageManager": "pnpm@9.15.9",
+  "packageManager": "pnpm@10.12.1",
   "description": "Basic presets for stylelint",
   "homepage": "https://github.com/dvcol/web-extension-utils",
   "bugs": "https://github.com/dvcol/web-extension-utils/issues",
@@ -196,17 +196,17 @@
     "rxjs": "^7.8.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.0",
-    "@commitlint/config-conventional": "^17.0.0",
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
     "@dvcol/eslint-plugin-presets": "^1.3.11",
     "@types/chrome": "^0.0.313",
-    "eslint": "^8.13.0",
+    "eslint": "^9.0.0",
     "eslint-plugin-prettier": "^5.1.2",
     "extract-changelog-release": "^1.0.2",
-    "husky": "^8.0.0",
+    "husky": "^9.0.0",
     "prettier": "^3.3.0",
     "standard-version": "^9.3.2",
-    "tsup": "^6.0.0",
+    "tsup": "^8.0.0",
     "typescript": "^5.0.2"
   },
   "pnpm": {
